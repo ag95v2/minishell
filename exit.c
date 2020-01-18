@@ -1,9 +1,10 @@
-#include "libft.h"
+#include "environment.h"
 
-void	exit(int nargs, char **args, int last_status)
+void	builtin_exit(char **args, t_env env)
 {
-	if (nargs > 0)
+	(void)env;
+	if (*args)
 		exit(ft_atoi(args[0]));
 	else
-		exit(last_status);
+		exit(0);
 }

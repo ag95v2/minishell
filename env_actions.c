@@ -12,14 +12,12 @@ t_env			copy_env(t_env env)
 
 int				ft_setenv(t_env env, char *name, char *value)
 {
-	(t_ptree *)env;
-	return (insert_value(env, name, value));
+	return (insert_value((t_ptree *)env, name, value));
 }
 
 void			ft_unsetenv(t_env env, char *name)
 {
-	(t_ptree *)env;
-	del_key(env, name);
+	del_key((t_ptree *)env, name);
 }
 
 void			print_env(t_env env, int *memory_ok)

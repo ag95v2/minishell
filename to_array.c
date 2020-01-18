@@ -32,7 +32,6 @@ static char		*concat_key_value(t_list *l)
 
 static char		**list_to_array(t_list *l)
 {
-	char	*entry;
 	char	**env;
 	char	**ret;
 

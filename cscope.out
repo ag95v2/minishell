@@ -1,4 +1,40 @@
-cscope 15 $HOME/21/minishell               0000411793
+cscope 15 $HOME/21/minishell               0000414989
+	@builtin_cd.c
+
+1 
+	~"libá.h
+"
+
+2 
+	~"’vœÚm’t.h
+"
+
+4 
+	$bužtš_cd
+(**
+¬gs
+, 
+t_’v
+ 
+’v
+)
+
+6 ()
+¬gs
+;
+
+7 ()
+’v
+;
+
+8 
+	`á_put¡r
+("Sorry, cd is‚ot implemented yet!\n");
+
+9 
+	}
+}
+
 	@del_array.c
 
 1 
@@ -52,15 +88,17 @@ NULL
 >
 
 2 
-	~"libá.h
+	~"’vœÚm’t.h
 "
 
 9 
-	$echo
-(
-Çrgs
-, **
+	$bužtš_echo
+(**
 ¬gs
+, 
+t_’v
+ 
+’v
 )
 
 11 
@@ -71,73 +109,69 @@ mšus_n_æag
 i
 ;
 
-14 
+14 ()
+’v
+;
+
+15 
 mšus_n_æag
  = 0;
 
-15 
+16 
 i
  = 0;
 
-16 ià(!
-Çrgs
+17 ià(!*
+¬gs
 )
 
-18 ià(!
+19 ià(!
 	`á_¡rcmp
 (
 ¬gs
 [0], "-n"))
 
-20 
+21 
 mšus_n_æag
  = 1;
 
-21 
+22 
 i
 ++;
 
-23 
-i
- < 
-Çrgs
+24 *
+¬gs
 )
 
-25 
+26 
 	`á_put¡r
-(
+(*
 ¬gs
-[
-i
-]);
+);
 
-26 ià(!
+27 ià(!
 mšus_n_æag
 )
 
-27 
+28 
 	`á_putch¬
-(
-i
- =ð
-Çrgs
- ? '\n' : ' ');
+(!*(
+¬gs
+ + 1) ? '\n' : ' ');
 
-28 ià(
-i
- <ð
-Çrgs
-)
+29 ià(*(
+¬gs
+ + 1))
 
-29 
+30 
 	`á_putch¬
 (' ');
 
-30 
-i
+31 
+¬gs
 ++;
 
-33 
+34 
 	}
 }
 
@@ -203,15 +237,11 @@ t_’v
 v®ue
 )
 
-15 (
+15  (
+	`š£¹_v®ue
+((
 t_±»e
  *)
-’v
-;
-
-16  (
-	`š£¹_v®ue
-(
 ’v
 , 
 Çme
@@ -219,11 +249,11 @@ t_±»e
 v®ue
 ));
 
-17 
+16 
 	}
 }
 
-19 
+18 
 	$á_un£‹nv
 (
 t_’v
@@ -233,25 +263,21 @@ t_’v
 Çme
 )
 
-21 (
+20 
+	`d–_key
+((
 t_±»e
  *)
-’v
-;
-
-22 
-	`d–_key
-(
 ’v
 , 
 Çme
 );
 
-23 
+21 
 	}
 }
 
-25 
+23 
 	$´št_’v
 (
 t_’v
@@ -261,15 +287,15 @@ t_’v
 memÜy_ok
 )
 
-27 **
+25 **
 ¬r
 ;
 
-28 **
+26 **
 ¡¬t
 ;
 
-30 
+28 
 ¬r
  = 
 	`to_¬¿y
@@ -279,37 +305,233 @@ memÜy_ok
 memÜy_ok
 );
 
-31 ià(!(*
+29 ià(!(*
 memÜy_ok
 ))
 
-33 
+31 
 ¡¬t
  = 
 ¬r
 ;
 
-34 *
+32 *
 ¬r
 )
 
-36 
+34 
 	`á_´štf
 ("%s\n", *
 ¬r
 );
 
-37 
+35 
 ¬r
 ++;
 
-39 
+37 
 	`d–_¬¿y
 (
 ¡¬t
 );
 
-40 
+38 
+	}
+}
+
+	@env_related_builtins.c
+
+1 
+	~"’vœÚm’t.h
+"
+
+3 
+	$bužtš_g‘’v
+(**
+¬gs
+, 
+t_’v
+ 
+’v
+)
+
+5 *
+c
+;
+
+7 ià(!
+¬gs
+[0])
+
+9 
+	`á_´štf
+("%s", "Usage: getenv‚ame\n");
+
+12 *
+¬gs
+)
+
+14 
+c
+ = 
+	`á_g‘’v
+(
+’v
+, 
+¬gs
+[0]);
+
+15 ià(!
+c
+)
+
+16 
+	`á_´štf
+("NØsuch v¬ŸbË iÀ’v: %s\n", 
+¬gs
+[0]);
+
+18 
+	`á_´štf
+("%s=%s\n", 
+¬gs
+[0], 
+c
+);
+
+19 
+	`ä“
+(
+c
+);
+
+20 
+¬gs
+++;
+
+22 
+	}
+}
+
+24 
+	$bužtš_£‹nv
+(**
+¬gs
+, 
+t_’v
+ 
+’v
+)
+
+26 ià(!*
+¬gs
+)
+
+28 ià(*
+¬gs
+ && !*(args+1))
+
+30 
+	`á_£‹nv
+(
+’v
+, 
+	`á_¡rdup
+(*
+¬gs
+), ft_strdup(""));
+
+33 ià(!
+	`á_£‹nv
+(
+’v
+, 
+	`á_¡rdup
+(*
+¬gs
+), ft_strdup(*(args + 1))))
+
+34 
+	`á_´štf
+("Error: Could‚ot setƒnv\n");
+
+35 
+	}
+}
+
+37 
+	$bužtš_un£‹nv
+(**
+¬gs
+, 
+t_’v
+ 
+’v
+)
+
+39 *
+¬gs
+)
+
+41 
+	`á_un£‹nv
+(
+’v
+, *
+¬gs
+);
+
+42 
+¬gs
+++;
+
+44 
+	}
+}
+
+46 
+	$bužtš_’v
+(**
+¬gs
+, 
+t_’v
+ 
+’v
+)
+
+48 
+memÜy_ok
+;
+
+50 ià(!*
+¬gs
+)
+
+52 
+memÜy_ok
+ = 1;
+
+53 
+	`´št_’v
+(
+’v
+, &
+memÜy_ok
+);
+
+54 ià(!
+memÜy_ok
+)
+
+55 
+	`á_´štf
+("Notƒnough memory\n");
+
+59 
+	`á_´štf
+("This case is‚ot implemented yet.\n");
+
+61 
 	}
 }
 
@@ -411,27 +633,41 @@ t_’v
 memÜy_ok
 );
 
+23 *
+á_g‘’v
+(
+t_’v
+ 
+’v
+, *
+Çme
+);
+
 	@exit.c
 
 1 
-	~"libá.h
+	~"’vœÚm’t.h
 "
 
 3 
-	$ex™
-(
-Çrgs
-, **
+	$bužtš_ex™
+(**
 ¬gs
-, 
-Ï¡_¡©us
+, 
+t_’v
+ 
+’v
 )
 
-5 ià(
-Çrgs
- > 0)
+5 ()
+’v
+;
 
-6 
+6 ià(*
+¬gs
+)
+
+7 
 	`ex™
 (
 	`á_©oi
@@ -439,11 +675,51 @@ memÜy_ok
 ¬gs
 [0]));
 
-8 
+9 
 	`ex™
+(0);
+
+10 
+	}
+}
+
+	@ft_getenv.c
+
+1 
+	~"’vœÚm’t.h
+"
+
+3 *
+	$á_g‘’v
 (
-Ï¡_¡©us
-);
+t_’v
+ 
+’v
+, *
+Çme
+)
+
+5 
+t_±»e
+ *
+Œ“
+;
+
+7 
+Œ“
+ = (
+t_±»e
+ *)
+’v
+;
+
+8  (
+	`£¬ch_key
+(
+Œ“
+, 
+Çme
+));
 
 9 
 	}
@@ -475,7 +751,7 @@ v
 	`á_¡rchr
 (
 s
-, '=')))
+, '=') + 1))
 
 17 ià(!(*
 v®ue
@@ -493,7 +769,9 @@ key
 	`á_¡ºew
 (
 v
- - *key)))
+ - 
+s
+)))
 
 21 
 	`ä“
@@ -513,7 +791,7 @@ key
 s
 , 
 v
- - *key);
+ - s - 1);
 
 26 
 	`á_¡ºýy
@@ -530,8 +808,8 @@ v
 }
 
 30 
-t_±»e
- *
+t_’v
+ 
 	$š™_’v
 (**
 ’vœÚ
@@ -614,28 +892,24 @@ key
 );
 
 49 
-	`ä“
-(
-v®ue
-);
-
-50 
 key
  = 0;
 
-51 
+50 
 v®ue
  = 0;
 
-52 
+51 
 ’vœÚ
 ++;
 
-54  (
+53  ((
+t_’v
+)
 Œ“
 );
 
-55 
+54 
 	}
 }
 
@@ -14689,6 +14963,270 @@ t_li¡
 l
 );
 
+	@minishell.c
+
+1 
+	~"’vœÚm’t.h
+"
+
+2 
+	~"t_bužtš.h
+"
+
+4 **
+’vœÚ
+;
+
+6 
+	$´om±
+()
+
+8 
+	`á_put¡r
+("minishell_v0.2_____$");
+
+9 
+	}
+}
+
+11 
+t_bužtš
+ 
+	$g‘_bužtš
+(*
+Çme
+)
+
+13 ià(!
+	`á_¡rcmp
+(
+Çme
+, "echo"))
+
+14  (&
+bužtš_echo
+);
+
+15 ià(!
+	`á_¡rcmp
+(
+Çme
+, "cd"))
+
+16  (&
+bužtš_cd
+);
+
+17 ià(!
+	`á_¡rcmp
+(
+Çme
+, "env"))
+
+18  (&
+bužtš_’v
+);
+
+19 ià(!
+	`á_¡rcmp
+(
+Çme
+, "setenv"))
+
+20  (&
+bužtš_£‹nv
+);
+
+21 ià(!
+	`á_¡rcmp
+(
+Çme
+, "getenv"))
+
+22  (&
+bužtš_g‘’v
+);
+
+23 ià(!
+	`á_¡rcmp
+(
+Çme
+, "unsetenv"))
+
+24  (&
+bužtš_un£‹nv
+);
+
+25 ià(!
+	`á_¡rcmp
+(
+Çme
+, "exit"))
+
+26  (&
+bužtš_ex™
+);
+
+27  (
+NULL
+);
+
+28 
+	}
+}
+
+30 
+	$maš
+()
+
+32 *
+cmd
+;
+
+33 **
+wÜds
+;
+
+34 
+nch¬
+;
+
+35 
+t_bužtš
+ 
+bužtš
+;
+
+36 
+t_’v
+ 
+’v
+;
+
+38 ià(!(
+’v
+ = 
+	`š™_’v
+(
+’vœÚ
+)))
+
+40 
+	`´om±
+();
+
+41 (
+nch¬
+ = 
+	`g‘_Ãxt_lše
+(0, &
+cmd
+)))
+
+43 ià(!
+nch¬
+)
+
+45 
+	`´om±
+();
+
+48 
+wÜds
+ = 
+	`á_¡r¥l™
+(
+cmd
+, ' ');
+
+49 ià(!
+wÜds
+[0])
+
+51 
+	`ä“
+(
+wÜds
+);
+
+52 
+	`ä“
+(
+cmd
+);
+
+53 
+cmd
+ = 
+NULL
+;
+
+54 
+	`´om±
+();
+
+57 ià(!(
+bužtš
+ = 
+	`g‘_bužtš
+(
+wÜds
+[0])))
+
+59 
+	`á_´štf
+("Commªd‚Ù found: %s\n", 
+wÜds
+[0]);
+
+60 
+	`á_´štf
+("%s\n", "Path searching is still‚ot implemented =)");
+
+61 
+	`d–_¬¿y
+(
+wÜds
+);
+
+62 
+	`ä“
+(
+cmd
+);
+
+63 
+cmd
+ = 
+NULL
+;
+
+64 
+	`´om±
+();
+
+67 
+	`bužtš
+(
+wÜds
+ + 1, 
+’v
+);
+
+68 
+	`d–_¬¿y
+(
+wÜds
+);
+
+69 
+	`´om±
+();
+
+72 
+	}
+}
+
 	@printargs.c
 
 1 
@@ -14729,6 +15267,102 @@ i
 	}
 }
 
+	@t_builtin.h
+
+1 #iâdeà
+T_BUILTIN_H
+
+
+2 
+	#T_BUILTIN_H
+
+
+	)
+
+4 
+	~"’vœÚm’t.h
+"
+
+6 (*
+	tt_bužtš
+)(**
+	t¬gs
+, 
+	tt_’v
+ 
+	t’v
+);
+
+8 
+	`bužtš_echo
+(**
+¬gs
+, 
+t_’v
+ 
+’v
+);
+
+9 
+	`bužtš_cd
+(**
+¬gs
+, 
+t_’v
+ 
+’v
+);
+
+10 
+	`bužtš_g‘’v
+(**
+¬gs
+, 
+t_’v
+ 
+’v
+);
+
+11 
+	`bužtš_£‹nv
+(**
+¬gs
+, 
+t_’v
+ 
+’v
+);
+
+12 
+	`bužtš_un£‹nv
+(**
+¬gs
+, 
+t_’v
+ 
+’v
+);
+
+13 
+	`bužtš_’v
+(**
+¬gs
+, 
+t_’v
+ 
+’v
+);
+
+14 
+	`bužtš_ex™
+(**
+¬gs
+, 
+t_’v
+ 
+’v
+);
+
 	@test_env.c
 
 1 
@@ -14753,7 +15387,11 @@ t_’v
 memÜy_ok
 ;
 
-10 
+9 *
+v®
+;
+
+11 
 ’v
  = 
 	`š™_’v
@@ -14762,6 +15400,24 @@ memÜy_ok
 );
 
 12 
+v®
+ = 
+	`á_g‘’v
+(
+’v
+, "PATH");
+
+13 ià(
+v®
+)
+
+14 
+	`á_´štf
+("PATH=%s\n", 
+v®
+);
+
+15 
 	`´št_’v
 (
 ’v
@@ -14769,7 +15425,7 @@ memÜy_ok
 memÜy_ok
 );
 
-14 
+17 
 	}
 }
 
@@ -15339,7 +15995,7 @@ cÚ‹Á
 key
 è+ ft_¡¾’(
 v®ue
-));
+) + 2);
 
 15 ià(!
 »s
@@ -15361,39 +16017,39 @@ cu¼’t
 key
 ++))
 
-20 *
+20 --
+cu¼’t
+;
+
+21 *
 cu¼’t
 ++ = '=';
 
-21 (*
+22 (*
 cu¼’t
 ++ = *
 v®ue
 ++))
 
-23 *
+24 *
 cu¼’t
  = 0;
 
-24  (
+25  (
 »s
 );
 
-25 
+26 
 	}
 }
 
-32 **
+33 **
 	$li¡_to_¬¿y
 (
 t_li¡
  *
 l
 )
-
-34 *
-’Œy
-;
 
 35 **
 ’v
@@ -75310,13 +75966,16 @@ _ASM_GENERIC_ERRNO_BASE_H
 .
 1
 /usr/include
-193
-4506
+198
+4578
+builtin_cd.c
 del_array.c
 echo.c
 env_actions.c
+env_related_builtins.c
 environment.h
 exit.c
+ft_getenv.c
 init_env.c
 libft/clang_formatted.c
 libft/ft_array_subtract.c
@@ -75434,7 +76093,9 @@ libft/includes/bbtree_utils.h
 libft/includes/ft_ptree.h
 libft/includes/get_next_line.h
 libft/includes/libft.h
+minishell.c
 printargs.c
+t_builtin.h
 test_env.c
 test_ptree/main.c
 to_array.c
