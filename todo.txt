@@ -1,0 +1,146 @@
+
+echo -- just print arguments (do not deal with ' and "). -n and -E -e
+options are optional
+
+###############################################################################
+cd DIR - change working directory to DIR
+
+Full posix documentation read here:
+https://pubs.opengroup.org/onlinepubs/9699919799/
+
+(cd -; cd .; cd ~; cd nonexisting dir; cd ; == cd $HOME)
+to first argument;
+
+Enviromental variable CDPATH contains alternative search paths for path
+(separated by :). Used if DIR does not start with /
+
+If dir is not found and option cdable_vars is set then variable DIR is 
+expanded
+
+Flags:
+-L (ignored)
+-P - in case of symbolic link, follow it (follow always) and set $PWD to 
+getcwd(), which will be absolute physical path whithout symlinks.
+otherwise set $PWD to: path_to_symlink/name_of_symlink
+cd .. in that case will change to parent of symlink or parent to dereferenced 
+symlink even in case of unset PWD
+
+Distinct between WITHOUT USING ERRNO:
+-"permission denied" (access first, do not forget about race conditions)
+-"not a directory" (stat() first)
+-"no such file or directory"
+-cd - and "OLDPWD not set"
+-cd  ;and HOME NOT SET 
+===========================Super important =)) ===============================
+-PROCESS CORRECTLY LOOPS OF SYMBOLIC LINKS (use readlink())
+
+If option cdable vars is set abs 
+
+Also loops of directories of symbolic links are perfectly fine (pwd is appended)
+anton@comp:~/b/lnk/loop_lnk/lnk$ cd loop_lnk/
+anton@comp:~/b/lnk/loop_lnk/lnk/loop_lnk$ cd lnk
+anton@comp:~/b/lnk/loop_lnk/lnk/loop_lnk/lnk$ cd loop_lnk
+...
+
+###############################################################################
+exit: exit [n]
+    Exit the shell.
+    
+    Exits the shell with a status of N.  If N is omitted, the exit status
+    is that of the last command executed.
+###############################################################################
+
+setenv
+
+unsetenv
+
+env run a program in specified environment
+examples:
+
+1) env PATH=. ls
+env: ‘ls’: No such file or directory
+PATH for ls was overwritten
+
+2) env a=b echo $a
+No effect (expansion was before modification of environment)
+
+3) env PWD=21 bash
+$ pwd
+~/
+No effect (PWD and OLDPWD were replaced probably ~/.bashrc)
+Also according to POSIX, assignments to PWD could be ignored.
+
+Option: -i - start process in empty environment
+
+In case of empty command, print environment 
+Caller's environment is not changed anyway!
+
+###############################################################################
+
+expansions 
+
+ ~ expansion (only if ~ is a first character in word)
+
+~			The value of $HOME (if HOME is unset, a value of current user HOME)
+~/foo		$HOME/foo
+~fred/foo	The subdirectory foo of the home directory of the user fred
+~+/foo		$PWD/foo
+~-/foo		${OLDPWD-'~-'}/foo
+
+Not implemened expansions:
+~N The string that would be displayed by ‘dirs +N’
+~+N The string that would be displayed by ‘dirs +N’
+~-N The string that would be displayed by ‘dirs -N’}
+
+ $ expansion
+Implemented:
+Simple variable name expansion $var
+
+Not implemented:
+
+###############################################################################
+
+Command line substitution (MAY BE NESTED)
+cat $(ls -tr1 *.c | head -1) will cat last modified c file
+Equivalent to cat `ls -tr1 | head -1`
+
+Arithmetic expansion (MAY BE NESTED)
+$(( expr ))
+
+###############################################################################
+NOT USED IN MINISHELL PROJECT
+###############################################################################
+###############################################################################
+
+ls *.c (*, ? shell expansions) if * is not escaped
+
+################################################################################
+Quotes are used OLNY for new lines.
+While inside opened quote, wait till it is closed and read newline in case of \n
+(print "> ")
+ls "asd
+> asd"
+
+################################################################################
+Also ignore '\n' and wait for input in case of "\\n" (consider input as long string)
+
+To print " it should be escaped with '\'
+
+Quotes cancel expansions
+Variable names:			' - yes; " - NO
+Wildcards:				' - yes; " - yes
+Command substitution:	' - yes; " - NO
+
+################################################################################
+We can escape variable expansion with \
+echo $FILE (same as echo "$FILE") - prints contents of variable FILE
+echo \$FILE  prints "$FILE"
+
+################################################################################
+Inside double quotes * expansion does not work
+$ echo "*.c"
+$ *.c
+
+echo *.c
+all files with suffix ".c"
+################################################################################
