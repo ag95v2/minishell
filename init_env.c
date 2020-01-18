@@ -12,21 +12,22 @@ static int		split_env_entry(char *s, char **key, char **value)
 {
 	char	*v;
 
-	if (!(v = ft_strchr(s, '='))
+	if (!(v = ft_strchr(s, '=') + 1))
 		return (2);
 	if (!(*value = ft_strnew(ft_strlen(v))))
 		return (0);
-	if (!(*key = ft_strnew(v - key)))
+	if (!(*key = ft_strnew(v - s)))
 	{
-		ft_memdel(*value);
+		free(*value);
+		*value = 0;
 		return (0);
 	}
-	ft_strncpy(*key, s, v - key);
+	ft_strncpy(*key, s, v - s - 1);
 	ft_strncpy(*value, v, ft_strlen(v));
 	return (1);
 }
 
-t_ptree			*init_env(char **environ)
+t_env			init_env(char **environ)
 {
 	t_ptree	*tree;
 	char	*key;
@@ -44,9 +45,10 @@ t_ptree			*init_env(char **environ)
 		}
 		if (status == 1 && !insert_value(tree, key, value))
 			return (NULL);
-		ft_memdel(key);
-		ft_memdel(value);
+		free(key);
+		key = 0;
+		value = 0;
 		environ++;
 	}
-	return (tree);
+	return ((t_env)tree);
 }

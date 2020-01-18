@@ -7,16 +7,17 @@ static char		*concat_key_value(t_list *l)
 	char	*value;
 	char	*current;
 
-	if (!l->data)
+	if (!l->content)
 		return (NULL);
-	key = ((t_key_value *)l->data)->key;
-	value = (char *)((t_key_value *)l->data)->value;
-	res = malloc(ft_strlen(key) + ft_strlen(value));
+	key = ((t_key_value *)l->content)->key;
+	value = (char *)((t_key_value *)l->content)->value;
+	res = malloc(ft_strlen(key) + ft_strlen(value) + 2);
 	if (!res)
 		return (NULL);
 	current = res;
 	while ((*current++ = *key++))
 		;
+	--current;
 	*current++ = '=';
 	while ((*current++ = *value++))
 		;
@@ -38,7 +39,7 @@ static char		**list_to_array(t_list *l)
 	if (!(env = ft_memalloc(sizeof(char *) * (ft_lstlen(l) + 1))))
 		return (NULL);
 	ret = env;
-	while (*l)
+	while (l)
 	{
 		if (!(*env = concat_key_value(l)))
 			return (del_array(ret));
@@ -50,10 +51,9 @@ static char		**list_to_array(t_list *l)
 
 static void		del_list_entry(void *content, size_t content_size)
 {
-	(void content_size);
-	(t_key_value *)content;
-	free(content->key);
-	free(content->value);
+	(void) content_size;
+	free(((t_key_value *)content)->key);
+	free(((t_key_value *)content)->value);
 }
 
 /*
@@ -66,16 +66,17 @@ static void		del_list_entry(void *content, size_t content_size)
 char			**to_array(t_env env, int *memory_ok)
 {
 	t_list	*l;
-	char	**env;
+	char	**envi;
+	t_ptree	*tree;
 
-	(t_ptree *)env;
+	tree = (t_ptree *)env;
 	*memory_ok = 1;
 	l = ptree_to_kvpairs(tree);
-	if (ft_lstlen(l) == 1 && !l->data)
+	if (ft_lstlen(l) == 1 && !l->content)
 		return (NULL);
-	env = list_to_array(l);
-	if (!env)
+	envi = list_to_array(l);
+	if (!envi)
 		*memory_ok = 0;
-	ft_lstdel(l, &del_list_entry);
-	return (env);
+	ft_lstdel(&l, &del_list_entry);
+	return (envi);
 }

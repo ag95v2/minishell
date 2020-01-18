@@ -11,6 +11,6 @@ void	*del_array(char **env)
 	start = env;
 	while (*env)
 		free(*env++);
-	ft_memdel(start);
+	free(start);
 	return (NULL);
 }
