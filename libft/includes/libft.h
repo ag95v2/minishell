@@ -131,5 +131,6 @@ int					ft_lstadd_data(t_list **lst, void *content,\
 		size_t content_size);
 
 int					ft_lstlen(t_list *l);
+char				*ft_path_append(char *path, char *name);
 
 #endif

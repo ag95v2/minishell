@@ -13,4 +13,6 @@ void			builtin_unsetenv(char **args, t_env env);
 void			builtin_env(char **args, t_env env);
 void			builtin_exit(char **args, t_env env);
 
+t_builtin		get_builtin(char *name);
+
 #endif

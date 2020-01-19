@@ -16,6 +16,8 @@ static int				get_n_words(char const *s, char c)
 {
 	int	n;
 
+	if (!s)
+		return (0);
 	n = 0;
 	while (*s)
 	{
