@@ -8,7 +8,12 @@ SRC=del_array.c\
 	init_env.c\
 	minishell.c\
 	to_array.c\
-	builtin_cd.c
+	builtin_cd.c\
+	find_path.c\
+	find_exec.c\
+	repl.c\
+	get_builtin.c
+
 
 
 

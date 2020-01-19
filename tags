@@ -24,6 +24,8 @@ D_PR	libft/Makefile	/^D_PR = .\/ft_printf$/;"	m
 E	libft/ft_printf/printf.h	23;"	d
 ENVIRONMENT_H	environment.h	2;"	d
 F	libft/ft_printf/printf.h	24;"	d
+FIND_EXEC_H	find_exec.h	2;"	d
+FIND_PATH_H	find_path.h	2;"	d
 FLAGS	Makefile	/^FLAGS=-g -Wall -Wextra -Werror$/;"	m
 FP_TYPE_H	libft/ft_printf/fp_type.h	14;"	d
 FT_FP_H	libft/ftoa/ft_fp.h	14;"	d
@@ -51,6 +53,7 @@ OCTAL	libft/ft_printf/conv_int.c	21;"	d	file:
 OCTAL	libft/ft_printf/conv_int2.c	17;"	d	file:
 PRINTF_H	libft/ft_printf/printf.h	14;"	d
 READ_SPEC_H	libft/ft_printf/read_spec.h	14;"	d
+REPL_H	repl.h	2;"	d
 SRC	Makefile	/^SRC=del_array.c\\$/;"	m
 SRC	libft/Makefile	/^define SRC $/;"	m
 SRC	libft/ftoa/Makefile	/^define SRC $/;"	m
@@ -119,6 +122,7 @@ e_length	libft/ft_printf/printf.h	/^enum				e_length$/;"	g
 end	libft/ftoa/ft_fp.h	/^	char				*end;$/;"	m	struct:s_decimal
 eof	libft/includes/get_next_line.h	/^	int			eof;$/;"	m	struct:s_unread_buff
 eval_power_sum	libft/ftoa/ftoa2.c	/^char					*eval_power_sum(t_float *num, int power_of2)$/;"	f
+execute	find_exec.c	/^static int	execute(char *progname, char **args, char **child_env)$/;"	f	file:
 exp	libft/ftoa/ft_fp.h	/^	unsigned short		exp;$/;"	m	struct:s_float
 exp_all_ones	libft/ftoa/ftoa.c	/^char		*exp_all_ones(t_float *num)$/;"	f
 exp_all_zeros	libft/ftoa/ftoa.c	/^char		*exp_all_zeros(t_float *num)$/;"	f
@@ -128,6 +132,9 @@ fill	libft/ft_itoa_base.c	/^static void	fill(char *s, long long n, char *base, i
 fill_t_float	libft/ftoa/ftoa2.c	/^void					fill_t_float(long double x, t_float *num, int precision)$/;"	f
 fill_tree	test_ptree/main.c	/^void		fill_tree(t_ptree *tree, char *keys[], char *values[])$/;"	f
 find_action	libft/ft_printf/find_action.c	/^t_conv_f	*find_action(t_spec spec)$/;"	f
+find_exec	find_exec.c	/^int			find_exec(char **args, t_env env)$/;"	f
+find_executable	find_path.c	/^static char	*find_executable(char *name, char *env_path)$/;"	f	file:
+find_path	find_path.c	/^char	*find_path(char *name, t_env env)$/;"	f
 flag_dash	libft/ft_printf/printf.h	/^	int				flag_dash;$/;"	m	struct:s_spec
 flag_hash	libft/ft_printf/printf.h	/^	int				flag_hash;$/;"	m	struct:s_spec
 flag_plus	libft/ft_printf/printf.h	/^	int				flag_plus;$/;"	m	struct:s_spec
@@ -175,6 +182,7 @@ ft_memmove	libft/ft_memmove.c	/^void	*ft_memmove(void *dest, const void *src, si
 ft_memset	libft/ft_memset.c	/^void	*ft_memset(void *b, int c, size_t len)$/;"	f
 ft_min_int	libft/ft_min_int.c	/^int	*ft_min_int(int *arr, int len)$/;"	f
 ft_minval_int	libft/ft_minval_int.c	/^int		ft_minval_int(int *a, unsigned int len)$/;"	f
+ft_path_append	libft/ft_path_append.c	/^char	*ft_path_append(char *path, char *name)$/;"	f
 ft_print_array	libft/ft_print_array.c	/^void	ft_print_array(int *a, int len)$/;"	f
 ft_printf	libft/ft_printf/printf.c	/^int			ft_printf(const char *format, ...)$/;"	f
 ft_putchar	libft/ft_putchar.c	/^void	ft_putchar(char c)$/;"	f
@@ -222,7 +230,7 @@ ft_unsetenv	env_actions.c	/^void			ft_unsetenv(t_env env, char *name)$/;"	f
 ftoa	libft/ftoa/ftoa.c	/^char		*ftoa(long double x, int precision)$/;"	f
 get_arg_str	libft/ft_printf/fprintf.c	/^static char			*get_arg_str(t_spec *spec, va_list *vl)$/;"	f	file:
 get_arg_str	libft/ft_printf/printf.c	/^char		*get_arg_str(t_spec *spec, va_list *vl)$/;"	f
-get_builtin	minishell.c	/^t_builtin	get_builtin(char *name)$/;"	f
+get_builtin	get_builtin.c	/^t_builtin	get_builtin(char *name)$/;"	f
 get_n_words	libft/ft_strsplit.c	/^static int				get_n_words(char const *s, char c)$/;"	f	file:
 get_next_line	libft/get_next_line.c	/^int						get_next_line(const int fd, char **line)$/;"	f
 h	libft/ft_printf/printf.h	/^	h,$/;"	e	enum:e_length
@@ -256,6 +264,7 @@ len_of_next	libft/ft_strsplit.c	/^static size_t			len_of_next(const char *src, c
 length	libft/ft_printf/printf.h	/^	enum e_length	length;$/;"	m	struct:s_spec	typeref:enum:s_spec::e_length
 list_to_array	to_array.c	/^static char		**list_to_array(t_list *l)$/;"	f	file:
 ll	libft/ft_printf/printf.h	/^	ll,$/;"	e	enum:e_length
+looks_like_path	find_path.c	/^static int	looks_like_path(char *name)$/;"	f	file:
 main	minishell.c	/^int	main()$/;"	f
 main	printargs.c	/^int main(int argc, char **argv)$/;"	f
 main	test_env.c	/^int	main()$/;"	f
@@ -277,6 +286,7 @@ new_tree	libft/ft_ptree.c	/^t_ptree			*new_tree(void)$/;"	f
 next	libft/includes/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
 next_level	libft/ft_bbtree_utils.c	/^static t_bbtree_node	*next_level(t_bbtree_node *current, int direction)$/;"	f	file:
 nl_found	libft/includes/get_next_line.h	/^	int			nl_found;$/;"	m	struct:s_unread_buff
+no_exec_rights	find_exec.c	/^static int	no_exec_rights(char *progname)$/;"	f	file:
 none	libft/ft_printf/printf.h	/^	none,$/;"	e	enum:e_length
 normal_case	libft/ftoa/ftoa.c	/^char		*normal_case(t_float *num)$/;"	f
 one	libft/includes/bbtree_utils.h	/^	void				*one;$/;"	m	struct:s_bbtree_node
@@ -295,7 +305,7 @@ print_keys	test_ptree/main.c	/^void		print_keys(t_ptree *tree, char *keys[])$/;"
 print_kventry	test_ptree/main.c	/^void		print_kventry(t_list *elem)$/;"	f
 print_until_percent	libft/ft_printf/fprintf.c	/^static const char	*print_until_percent(const char *format, int *i, int fd)$/;"	f	file:
 print_until_percent	libft/ft_printf/printf.c	/^const char	*print_until_percent(const char *format, int *i)$/;"	f
-prompt	minishell.c	/^void	prompt(void)$/;"	f
+prompt	repl.c	/^static void	prompt(void)$/;"	f	file:
 ptoa	libft/ft_printf/conv_other.c	/^char	*ptoa(void *p)$/;"	f
 ptree_to_kvpairs	libft/ft_ptree_to_kvpairs.c	/^t_list			*ptree_to_kvpairs(t_ptree *tree)$/;"	f
 put_max_first	libft/ft_bsort_int.c	/^static void		put_max_first(int *a, unsigned int len)$/;"	f	file:
@@ -308,7 +318,9 @@ read_precision	libft/ft_printf/read_spec.c	/^const char	*read_precision(const ch
 read_spec	libft/ft_printf/read_spec.c	/^const char	*read_spec(const char *format, t_spec *spec)$/;"	f
 read_width	libft/ft_printf/read_spec2.c	/^const char	*read_width(const char *f, t_spec *spec)$/;"	f
 remove_key	test_ptree/main.c	/^void		remove_key(t_ptree *tree, char *key)$/;"	f
+repl	repl.c	/^void	repl(t_env env)$/;"	f
 round_float	libft/ft_printf/apply_spec3.c	/^char	*round_float(char *s, int precision)$/;"	f
+run_cmd	repl.c	/^int	run_cmd(t_env env, char **words, char **cmd)$/;"	f
 s_bbtree_node	libft/includes/bbtree_utils.h	/^typedef	struct			s_bbtree_node$/;"	s
 s_conv_f	libft/ft_printf/printf.h	/^typedef struct		s_conv_f$/;"	s
 s_decimal	libft/ftoa/ft_fp.h	/^typedef struct			s_decimal$/;"	s
