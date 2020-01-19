@@ -15,7 +15,7 @@ static int				add_kvpair(t_list **kvpairs, char *key, char *value)
 {
 	t_key_value	*kv;
 
-	if (!(kv = malloc(sizeof(t_key_value))) ||
+	if (!(kv = ft_memalloc(sizeof(t_key_value))) ||
 		!(kv->key = ft_strdup(key)) ||
 		!(kv->value = ft_strdup(value)))
 		return (0);

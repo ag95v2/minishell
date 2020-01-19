@@ -10,6 +10,10 @@ t_env			copy_env(t_env env)
 	return ((t_env)copy_ptree((t_ptree *) env));
 }
 
+/*
+** Name should be freed later by caller
+*/
+
 int				ft_setenv(t_env env, char *name, char *value)
 {
 	return (insert_value((t_ptree *)env, name, value));

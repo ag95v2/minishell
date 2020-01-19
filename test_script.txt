@@ -1,0 +1,22 @@
+
+env
+
+setenv a b
+setenv c d
+
+getenv a
+getenv b
+
+unsetenv a
+env
+unsetenv b
+
+setenv c e
+setenv c
+unsetenv c
+
+setenv wertiuyweroiuywtroiuyoiuyweoiruywoeiuty
+env
+unsetenv wertiuyweroiuywtroiuyoiuyweoiruywoeiuty
+
+echo sadfsadf

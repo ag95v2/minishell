@@ -16,7 +16,6 @@ void			builtin_getenv(char **args, t_env env)
 			ft_printf("No such variable in env: %s\n", args[0]);
 		else
 			ft_printf("%s=%s\n", args[0], c);
-		free(c);
 		args++;
 	}
 }
@@ -27,10 +26,10 @@ void			builtin_setenv(char **args, t_env env)
 		return ;
 	if (*args && !*(args+1))
 	{
-		ft_setenv(env, ft_strdup(*args), ft_strdup(""));
+		ft_setenv(env, *args, ft_strdup(""));
 		return ;
 	}
-	if (!ft_setenv(env, ft_strdup(*args), ft_strdup(*(args + 1))))
+	if (!ft_setenv(env, *args, ft_strdup(*(args + 1))))
 		ft_printf("Error: Could not set env\n");
 }
 

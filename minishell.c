@@ -66,7 +66,11 @@ int	main()
 		}
 		builtin(words + 1, env);
 		del_array(words);
+		free(cmd);
+		cmd = NULL;
 		prompt();
 	}
+	delenv(env);
+	ft_putchar('\n');
 	return (0);
 }

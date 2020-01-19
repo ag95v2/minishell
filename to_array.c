@@ -21,7 +21,6 @@ static char		*concat_key_value(t_list *l)
 	*current++ = '=';
 	while ((*current++ = *value++))
 		;
-	*current = 0;
 	return (res);
 }
 
@@ -53,6 +52,7 @@ static void		del_list_entry(void *content, size_t content_size)
 	(void) content_size;
 	free(((t_key_value *)content)->key);
 	free(((t_key_value *)content)->value);
+	free(content);
 }
 
 /*
