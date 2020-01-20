@@ -12,8 +12,9 @@ SRC=del_array.c\
 	find_path.c\
 	find_exec.c\
 	repl.c\
-	get_builtin.c
-
+	get_builtin.c\
+	dollar_expansion.c\
+	tilda_expansion.c
 
 
 

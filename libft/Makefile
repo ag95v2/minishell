@@ -23,7 +23,8 @@ $(D_PR)/arg_extractors.c $(D_PR)/arg_extractors2.c $(D_PR)/conv_int.c $(D_PR)/co
 $(D_PR)/conv_wrappers_int.c $(D_PR)/conv_wrappers_int2.c $(D_PR)/conv_wrappers_other.c $(D_PR)/find_action.c \
 $(D_PR)/printf.c $(D_PR)/fprintf.c  $(D_PR)/read_spec.c $(D_PR)/read_spec2.c $(D_FT)/decimal_arithmetic.c $(D_FT)/decimal_arithmetic2.c \
 $(D_FT)/decimal_arithmetic3.c $(D_FT)/decimal_arithmetic4.c $(D_FT)/decimal_arithmetic5.c $(D_FT)/ftoa.c $(D_FT)/ftoa2.c \
-ft_ptree.c ft_copy_ptree.c ft_straddchar.c ft_ptree_to_kvpairs.c ft_lstlen.c ft_path_append.c
+ft_ptree.c ft_copy_ptree.c ft_straddchar.c ft_ptree_to_kvpairs.c ft_lstlen.c ft_path_append.c ft_is_escaped.c ft_is_part_of_word.c \
+ft_strsplit_unescaped.c
 endef
 
 OBJ = $(SRC:.c=.o)

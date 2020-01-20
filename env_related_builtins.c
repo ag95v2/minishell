@@ -20,14 +20,29 @@ void			builtin_getenv(char **args, t_env env)
 	}
 }
 
+/*
+** According to POSIX, names shall not contain '='
+** https://pubs.opengroup.org/onlinepubs/000095399/basedefs/xbd_chap08.html
+** Bash also does not tolerate ':', but we do
+*/
+
 void			builtin_setenv(char **args, t_env env)
 {
+	char	*tmp;
+
 	if (!*args)
 		return ;
 	if (*args && !*(args+1))
 	{
 		ft_setenv(env, *args, ft_strdup(""));
 		return ;
+	}
+	tmp = *args;
+	while (*tmp)
+	{
+		if (*tmp == '=')
+			return ;
+		tmp++;
 	}
 	if (!ft_setenv(env, *args, ft_strdup(*(args + 1))))
 		ft_printf("Error: Could not set env\n");

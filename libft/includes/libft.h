@@ -132,5 +132,14 @@ int					ft_lstadd_data(t_list **lst, void *content,\
 
 int					ft_lstlen(t_list *l);
 char				*ft_path_append(char *path, char *name);
+int					ft_is_escaped(const char *start, const char *symbol,\
+		char escape_char);
+
+int					ft_is_part_of_word(const char *start,\
+		const char *position,\
+		char sep,\
+		char escape);
+char				**ft_strsplit_unescaped(char const *s, char c,\
+		char escape);
 
 #endif

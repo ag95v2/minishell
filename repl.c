@@ -1,6 +1,7 @@
 #include "environment.h"
 #include "t_builtin.h"
 #include "find_exec.h"
+#include "expansions.h"
 
 static void	prompt(void)
 {
@@ -37,7 +38,13 @@ void	repl(t_env env)
 	prompt();
 	while ((nchar = get_next_line(0, &cmd)))
 	{
+		if (!expand_dollar(&cmd, env))
+		{
+			ft_memdel((void **)&cmd);
+			continue ;
+		}
 		words = ft_strsplit(cmd, ' ');
+		tilda_expansion(words, env);
 		run_cmd(env, words, &cmd);
 		del_array(words);
 		ft_memdel((void **)&cmd);
