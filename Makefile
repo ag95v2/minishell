@@ -14,7 +14,8 @@ SRC=del_array.c\
 	repl.c\
 	get_builtin.c\
 	dollar_expansion.c\
-	tilda_expansion.c
+	tilda_expansion.c\
+	builtin_env.c
 
 
 

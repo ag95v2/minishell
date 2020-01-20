@@ -8,10 +8,12 @@
 ** else return 1;
 */
 
-static int		split_env_entry(char *s, char **key, char **value)
+int		split_env_entry(char *s, char **key, char **value)
 {
 	char	*v;
 
+	if (!(v = ft_strchr(s, '=')))
+		return (2);
 	if (!(v = ft_strchr(s, '=') + 1))
 		return (2);
 	if (!(*value = ft_strnew(ft_strlen(v))))

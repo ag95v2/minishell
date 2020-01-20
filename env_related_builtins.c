@@ -56,20 +56,3 @@ void			builtin_unsetenv(char **args, t_env env)
 		args++;
 	}
 }
-
-void			builtin_env(char **args, t_env env)
-{
-	int	memory_ok;
-
-	if (!*args)
-	{
-		memory_ok = 1;
-		print_env(env, &memory_ok);
-		if (!memory_ok)
-			ft_printf("Not enough memory\n");
-	}
-	else
-	{
-		ft_printf("This case is not implemented yet.\n");
-	}
-}

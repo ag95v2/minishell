@@ -20,3 +20,14 @@ env
 unsetenv wertiuyweroiuywtroiuyoiuyweoiruywoeiuty
 
 echo sadfsadf
+
+env a=b c=d env
+env
+
+env a=b c=d ls
+
+echo $PATH
+echo $A
+echo ~
+
+ls ~ ~/21

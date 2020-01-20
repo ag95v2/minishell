@@ -10,6 +10,7 @@ typedef t_ptree *t_env;
 ** Convert between tree and char ** representations.
 */
 
+int				split_env_entry(char *s, char **key, char **value);
 t_env			init_env(char **environ);
 char			**to_array(t_env env, int *memory_ok);
 void			*del_array(char **arr);
