@@ -5,7 +5,7 @@ char	*ft_path_append(char *path, char *name)
 	char	*new;
 	char	*start;
 
-	new = malloc(ft_strlen(path) + ft_strlen(name) + 2);
+	new = ft_memalloc(ft_strlen(path) + ft_strlen(name) + 2);
 	if (!new)
 		return (NULL);
 	start = new;

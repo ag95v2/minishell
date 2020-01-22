@@ -13,6 +13,7 @@ BINARY	libft/ft_printf/conv_int.c	20;"	d	file:
 BINARY	libft/ft_printf/conv_int2.c	16;"	d	file:
 BUFF_SIZE	libft/includes/get_next_line.h	23;"	d
 C	libft/ft_printf/printf.h	21;"	d
+CD_UTILS_H	cd_utils.h	2;"	d
 CRUTCH_FLOAT_PRECISION_CONSTANT	libft/ftoa/ft_fp.h	17;"	d
 D	libft/ft_printf/printf.h	22;"	d
 DECIMAL	libft/ft_printf/conv_int.c	22;"	d	file:
@@ -23,6 +24,8 @@ D_FT	libft/Makefile	/^D_FT = .\/ftoa$/;"	m
 D_PR	libft/Makefile	/^D_PR = .\/ft_printf$/;"	m
 E	libft/ft_printf/printf.h	23;"	d
 ENVIRONMENT_H	environment.h	2;"	d
+ERR_UNSET_PWD	cd_utils.h	9;"	d
+EXPANSIONS_H	expansions.h	2;"	d
 F	libft/ft_printf/printf.h	24;"	d
 FIND_EXEC_H	find_exec.h	2;"	d
 FIND_PATH_H	find_path.h	2;"	d
@@ -81,14 +84,16 @@ apply_spec	libft/ft_printf/apply_spec.c	/^char		*apply_spec(char *s, t_spec *spe
 apply_width	libft/ft_printf/apply_spec2.c	/^char	*apply_width(char *s, t_spec spec)$/;"	f
 arg_extract	libft/ft_printf/printf.h	/^	void			*(*arg_extract)(t_spec spec, va_list *vl);$/;"	m	struct:s_conv_f
 avoid_leaks	libft/ft_strsplit.c	/^static void				avoid_leaks(char **res, int nlinks)$/;"	f	file:
+avoid_leaks	libft/ft_strsplit_unescaped.c	/^static void				avoid_leaks(char **res, int nlinks)$/;"	f	file:
 buff	libft/ftoa/ft_fp.h	/^	char				buff[LD_MAX_DIGITS];$/;"	m	struct:s_decimal
 builtin_cd	builtin_cd.c	/^void	builtin_cd(char **args, t_env env)$/;"	f
 builtin_echo	echo.c	/^int	builtin_echo(char **args, t_env env)$/;"	f
-builtin_env	env_related_builtins.c	/^void			builtin_env(char **args, t_env env)$/;"	f
+builtin_env	builtin_env.c	/^void			builtin_env(char **args, t_env env)$/;"	f
 builtin_exit	exit.c	/^void	builtin_exit(char **args, t_env env)$/;"	f
 builtin_getenv	env_related_builtins.c	/^void			builtin_getenv(char **args, t_env env)$/;"	f
 builtin_setenv	env_related_builtins.c	/^void			builtin_setenv(char **args, t_env env)$/;"	f
 builtin_unsetenv	env_related_builtins.c	/^void			builtin_unsetenv(char **args, t_env env)$/;"	f
+canonicize	canonicize.c	/^int		canonicize(char *path, int check_needed)$/;"	f
 char_extractor	libft/ft_printf/arg_extractors.c	/^void	*char_extractor(t_spec spec, va_list *vl)$/;"	f
 char_n_dup	libft/ft_printf/apply_spec.c	/^char		*char_n_dup(char c, int n)$/;"	f
 child	libft/includes/ft_ptree.h	/^  struct s_ptree     *child[N_CHILDREN];$/;"	m	struct:s_ptree	typeref:struct:s_ptree::s_ptree
@@ -102,11 +107,16 @@ conv	libft/ft_printf/printf.h	/^	char			conv;$/;"	m	struct:s_spec
 copy_digits_numbers	libft/ftoa/decimal_arithmetic2.c	/^void		copy_digits_numbers(char *src, char *dst)$/;"	f
 copy_env	env_actions.c	/^t_env			copy_env(t_env env)$/;"	f
 copy_from_buf	libft/ftoa/decimal_arithmetic4.c	/^void		copy_from_buf(char *buf, t_decimal *a)$/;"	f
+copy_next_component	canonicize.c	/^int				copy_next_component(char **end_canonical, char **end_raw)$/;"	f
 copy_ptree	libft/ft_copy_ptree.c	/^t_ptree				*copy_ptree(t_ptree *tree)$/;"	f
 copy_t_decimal	libft/ftoa/decimal_arithmetic5.c	/^void			copy_t_decimal(t_decimal *src, t_decimal *dst)$/;"	f
+create_argv	find_exec.c	/^static char		**create_argv(char *progname, char **args)$/;"	f	file:
 ctoa	libft/ft_printf/conv_other.c	/^char	*ctoa(char c)$/;"	f
 cut_float	libft/ftoa/ftoa2.c	/^void					cut_float(t_float *num, int *power_of2)$/;"	f
 data	libft/includes/get_next_line.h	/^	char		*data;$/;"	m	struct:s_unread_buff
+deal_with_dotdot	canonicize.c	/^int		deal_with_dotdot(char *start,\\$/;"	f
+deal_with_dotslash	canonicize.c	/^int		deal_with_dotslash(char **end_raw)$/;"	f
+deal_with_slashslash	canonicize.c	/^int		deal_with_slashslash(char **end_raw)$/;"	f
 del_array	del_array.c	/^void	*del_array(char **env)$/;"	f
 del_get_next	libft/ft_lstdel.c	/^static t_list	*del_get_next(t_list *l, void (*del)(void *, size_t))$/;"	f	file:
 del_key	libft/ft_ptree.c	/^void			del_key(t_ptree *tree, char *key)$/;"	f
@@ -117,8 +127,12 @@ del_list_entry	to_array.c	/^static void		del_list_entry(void *content, size_t co
 del_simple	libft/ft_del.c	/^void	del_simple(void *content, size_t content_size)$/;"	f
 del_tree	libft/ft_ptree.c	/^void			del_tree(t_ptree *tree)$/;"	f
 delenv	env_actions.c	/^void			delenv(t_env env)$/;"	f
+dot	cd_utils.h	/^				dot;$/;"	e	enum:e_component_types
+dotdot	cd_utils.h	/^				dotdot;$/;"	e	enum:e_component_types
 dummy_extractor	libft/ft_printf/arg_extractors.c	/^void	*dummy_extractor(t_spec spec, va_list *vl)$/;"	f
+e_component_types	cd_utils.h	/^typedef	enum	e_component_types$/;"	g
 e_length	libft/ft_printf/printf.h	/^enum				e_length$/;"	g
+empty	cd_utils.h	/^				empty;$/;"	e	enum:e_component_types
 end	libft/ftoa/ft_fp.h	/^	char				*end;$/;"	m	struct:s_decimal
 eof	libft/includes/get_next_line.h	/^	int			eof;$/;"	m	struct:s_unread_buff
 eval_power_sum	libft/ftoa/ftoa2.c	/^char					*eval_power_sum(t_float *num, int power_of2)$/;"	f
@@ -126,6 +140,8 @@ execute	find_exec.c	/^static int	execute(char *progname, char **args, char **chi
 exp	libft/ftoa/ft_fp.h	/^	unsigned short		exp;$/;"	m	struct:s_float
 exp_all_ones	libft/ftoa/ftoa.c	/^char		*exp_all_ones(t_float *num)$/;"	f
 exp_all_zeros	libft/ftoa/ftoa.c	/^char		*exp_all_zeros(t_float *num)$/;"	f
+expand_dollar	dollar_expansion.c	/^char	*expand_dollar(char **word, t_env env)$/;"	f
+expand_tilda	tilda_expansion.c	/^char	*expand_tilda(char	**word, t_env env)$/;"	f
 extr_sint	libft/ft_printf/arg_extractors2.c	/^void			*extr_sint(t_spec spec, va_list *vl, long long *p)$/;"	f
 extr_uint	libft/ft_printf/arg_extractors2.c	/^void			*extr_uint(t_spec spec, va_list *vl, long long *p)$/;"	f
 fill	libft/ft_itoa_base.c	/^static void	fill(char *s, long long n, char *base, int sgn)$/;"	f	file:
@@ -135,6 +151,8 @@ find_action	libft/ft_printf/find_action.c	/^t_conv_f	*find_action(t_spec spec)$/
 find_exec	find_exec.c	/^int			find_exec(char **args, t_env env)$/;"	f
 find_executable	find_path.c	/^static char	*find_executable(char *name, char *env_path)$/;"	f	file:
 find_path	find_path.c	/^char	*find_path(char *name, t_env env)$/;"	f
+find_user_home	tilda_expansion.c	/^char	*find_user_home(void)$/;"	f
+first_comp_dot_dotdot	get_curpath.c	/^static int		first_comp_dot_dotdot(char *dir, int *errors)$/;"	f	file:
 flag_dash	libft/ft_printf/printf.h	/^	int				flag_dash;$/;"	m	struct:s_spec
 flag_hash	libft/ft_printf/printf.h	/^	int				flag_hash;$/;"	m	struct:s_spec
 flag_plus	libft/ft_printf/printf.h	/^	int				flag_plus;$/;"	m	struct:s_spec
@@ -148,6 +166,8 @@ ft_bsort_int	libft/ft_bsort_int.c	/^void			ft_bsort_int(int *a, unsigned int len
 ft_bzero	libft/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
 ft_fprintf	libft/ft_printf/fprintf.c	/^int					ft_fprintf(int fd, const char *format, ...)$/;"	f
 ft_getenv	ft_getenv.c	/^char			*ft_getenv(t_env env, char *name)$/;"	f
+ft_is_escaped	libft/ft_is_escaped.c	/^int	ft_is_escaped(const char *start,\\$/;"	f
+ft_is_part_of_word	libft/ft_is_part_of_word.c	/^int				ft_is_part_of_word(const char *start,\\$/;"	f
 ft_isalnum	libft/ft_isalnum.c	/^int	ft_isalnum(int c)$/;"	f
 ft_isalpha	libft/ft_isalpha.c	/^int	ft_isalpha(int c)$/;"	f
 ft_isascii	libft/ft_isascii.c	/^int	ft_isascii(int c)$/;"	f
@@ -219,6 +239,7 @@ ft_strnstr	libft/ft_strnstr.c	/^char	*ft_strnstr(const char *haystack, const cha
 ft_strrchr	libft/ft_strrchr.c	/^char	*ft_strrchr(const char *s, int c)$/;"	f
 ft_strrev	libft/ft_strrev.c	/^void			ft_strrev(char *s)$/;"	f
 ft_strsplit	libft/ft_strsplit.c	/^char					**ft_strsplit(char const *s, char c)$/;"	f
+ft_strsplit_unescaped	libft/ft_strsplit_unescaped.c	/^char					**ft_strsplit_unescaped(char const *s, char c,\\$/;"	f
 ft_strstr	libft/ft_strstr.c	/^char	*ft_strstr(const char *haystack, const char *needle)$/;"	f
 ft_strsub	libft/ft_strsub.c	/^char	*ft_strsub(char const *s, unsigned int start, size_t len)$/;"	f
 ft_strtrim	libft/ft_strtrim.c	/^char		*ft_strtrim(char const *s)$/;"	f
@@ -231,12 +252,15 @@ ftoa	libft/ftoa/ftoa.c	/^char		*ftoa(long double x, int precision)$/;"	f
 get_arg_str	libft/ft_printf/fprintf.c	/^static char			*get_arg_str(t_spec *spec, va_list *vl)$/;"	f	file:
 get_arg_str	libft/ft_printf/printf.c	/^char		*get_arg_str(t_spec *spec, va_list *vl)$/;"	f
 get_builtin	get_builtin.c	/^t_builtin	get_builtin(char *name)$/;"	f
+get_curpath	get_curpath.c	/^char		*get_curpath(char **args)$/;"	f
 get_n_words	libft/ft_strsplit.c	/^static int				get_n_words(char const *s, char c)$/;"	f	file:
+get_n_words	libft/ft_strsplit_unescaped.c	/^static int				get_n_words(char const *s, char sep, char escape)$/;"	f	file:
 get_next_line	libft/get_next_line.c	/^int						get_next_line(const int fd, char **line)$/;"	f
 h	libft/ft_printf/printf.h	/^	h,$/;"	e	enum:e_length
 handle_stupid_c0_special_case	libft/ft_printf/fprintf.c	/^static void			handle_stupid_c0_special_case(char *s,\\$/;"	f	file:
 handle_stupid_c0_special_case	libft/ft_printf/printf.c	/^void		handle_stupid_c0_special_case(char *s, t_spec spec, int *i)$/;"	f
 hh	libft/ft_printf/printf.h	/^	hh,$/;"	e	enum:e_length
+hide_escape_chars	hide_escape_chars.c	/^void	hide_escape_chars(char *s, char escape)$/;"	f
 init_env	init_env.c	/^t_env			init_env(char **environ)$/;"	f
 init_spec	libft/ft_printf/read_spec2.c	/^void		init_spec(t_spec *spec)$/;"	f
 init_t_decimal	libft/ftoa/decimal_arithmetic.c	/^void			init_t_decimal(t_decimal *x)$/;"	f
@@ -245,6 +269,7 @@ insert_point	libft/ftoa/decimal_arithmetic2.c	/^void		insert_point(int after_dot
 insert_value	libft/ft_ptree.c	/^int				insert_value(t_ptree *tree, char *key, void *value)$/;"	f
 int_extractor	libft/ft_printf/arg_extractors.c	/^void	*int_extractor(t_spec spec, va_list *vl)$/;"	f
 io_err	libft/includes/get_next_line.h	/^	int			io_err;$/;"	m	struct:s_unread_buff
+is_a_directory	canonicize.c	/^int		is_a_directory(char *path)$/;"	f
 is_negative	libft/ftoa/ft_fp.h	/^	int					is_negative;$/;"	m	struct:s_decimal
 is_nonfloat_numeric	libft/ft_printf/apply_spec5.c	/^int			is_nonfloat_numeric(t_spec spec)$/;"	f
 is_numeric	libft/ft_printf/apply_spec5.c	/^int			is_numeric(t_spec spec)$/;"	f
@@ -261,6 +286,7 @@ l	libft/ft_printf/printf.h	/^	l,$/;"	e	enum:e_length
 last_check	libft/ft_printf/apply_spec3.c	/^char	*last_check(int carry_bit, char *digit, char *s, int precision)$/;"	f
 len_after_dot	libft/ft_printf/apply_spec3.c	/^int		len_after_dot(char *s)$/;"	f
 len_of_next	libft/ft_strsplit.c	/^static size_t			len_of_next(const char *src, char sep)$/;"	f	file:
+len_of_next	libft/ft_strsplit_unescaped.c	/^static size_t			len_of_next(const char *src, char sep, char escape)$/;"	f	file:
 length	libft/ft_printf/printf.h	/^	enum e_length	length;$/;"	m	struct:s_spec	typeref:enum:s_spec::e_length
 list_to_array	to_array.c	/^static char		**list_to_array(t_list *l)$/;"	f	file:
 ll	libft/ft_printf/printf.h	/^	ll,$/;"	e	enum:e_length
@@ -273,6 +299,7 @@ mant	libft/ftoa/ft_fp.h	/^	unsigned long int	mant;$/;"	m	struct:s_float
 mant_mask	libft/ftoa/ft_fp.h	/^	unsigned long int	mant_mask;$/;"	m	struct:s_float
 mask_shift	libft/ftoa/ft_fp.h	/^	int					mask_shift;$/;"	m	struct:s_float
 max	libft/ftoa/decimal_arithmetic4.c	/^int			max(int a, int b)$/;"	f
+memory_trouble	find_exec.c	/^static int	memory_trouble(char **child_env)$/;"	f	file:
 mul_digit	libft/ftoa/decimal_arithmetic4.c	/^void		mul_digit(t_decimal *a, t_decimal *b, \\$/;"	f
 multiply_positive_decimal	libft/ftoa/decimal_arithmetic5.c	/^void			multiply_positive_decimal(t_decimal *a, t_decimal *b)$/;"	f
 my_abs	libft/ft_putnbr.c	/^static int			my_abs(int n)$/;"	f	file:
@@ -288,10 +315,13 @@ next_level	libft/ft_bbtree_utils.c	/^static t_bbtree_node	*next_level(t_bbtree_n
 nl_found	libft/includes/get_next_line.h	/^	int			nl_found;$/;"	m	struct:s_unread_buff
 no_exec_rights	find_exec.c	/^static int	no_exec_rights(char *progname)$/;"	f	file:
 none	libft/ft_printf/printf.h	/^	none,$/;"	e	enum:e_length
+normal	cd_utils.h	/^				normal;$/;"	e	enum:e_component_types
 normal_case	libft/ftoa/ftoa.c	/^char		*normal_case(t_float *num)$/;"	f
 one	libft/includes/bbtree_utils.h	/^	void				*one;$/;"	m	struct:s_bbtree_node
 only_zeros	libft/ft_printf/apply_spec4.c	/^int		only_zeros(char *s)$/;"	f
 our_abs	libft/ft_itoa_base.c	/^static int	our_abs(int n)$/;"	f	file:
+parse_cd_args	parse_cd_args.c	/^char	**parse_cd_args(char **args, int *flag_p)$/;"	f
+part_is_a_directory	canonicize.c	/^int		part_is_a_directory(char *start, char *end)$/;"	f
 percent_to_a	libft/ft_printf/conv_other.c	/^char	*percent_to_a(void)$/;"	f
 pos	libft/includes/get_next_line.h	/^	int			pos;$/;"	m	struct:s_unread_buff
 positive_ascii_to	libft/ftoa/decimal_arithmetic3.c	/^void		positive_ascii_to(t_decimal *repr, char *s)$/;"	f
@@ -319,6 +349,7 @@ read_spec	libft/ft_printf/read_spec.c	/^const char	*read_spec(const char *format
 read_width	libft/ft_printf/read_spec2.c	/^const char	*read_width(const char *f, t_spec *spec)$/;"	f
 remove_key	test_ptree/main.c	/^void		remove_key(t_ptree *tree, char *key)$/;"	f
 repl	repl.c	/^void	repl(t_env env)$/;"	f
+replace	dollar_expansion.c	/^static char	*replace(char **word, char *pos, const char *value)$/;"	f	file:
 round_float	libft/ft_printf/apply_spec3.c	/^char	*round_float(char *s, int precision)$/;"	f
 run_cmd	repl.c	/^int	run_cmd(t_env env, char **words, char **cmd)$/;"	f
 s_bbtree_node	libft/includes/bbtree_utils.h	/^typedef	struct			s_bbtree_node$/;"	s
@@ -338,10 +369,11 @@ single_digit_a	libft/ftoa/decimal_arithmetic3.c	/^void		single_digit_a(t_decimal
 single_digit_b	libft/ftoa/decimal_arithmetic3.c	/^void		single_digit_b(t_decimal *b, char **res, int *carry)$/;"	f
 single_digit_both	libft/ftoa/decimal_arithmetic3.c	/^void		single_digit_both(t_decimal *a, t_decimal *b, \\$/;"	f
 specifiers	libft/ft_printf/printf.h	/^	char			*specifiers;$/;"	m	struct:s_conv_f
-split_env_entry	init_env.c	/^static int		split_env_entry(char *s, char **key, char **value)$/;"	f	file:
+split_env_entry	init_env.c	/^int		split_env_entry(char *s, char **key, char **value)$/;"	f
 square_positive_decimal	libft/ftoa/decimal_arithmetic.c	/^void			square_positive_decimal(t_decimal *x)$/;"	f
 start	libft/ftoa/ft_fp.h	/^	char				*start;$/;"	m	struct:s_decimal
 start_of_next	libft/ft_strsplit.c	/^static const char		*start_of_next(const char *s, char sep)$/;"	f	file:
+start_of_next	libft/ft_strsplit_unescaped.c	/^static const char		*start_of_next(const char *s, char sep)$/;"	f	file:
 stoa	libft/ft_printf/conv_other.c	/^char	*stoa(char *s)$/;"	f
 str_extractor	libft/ft_printf/arg_extractors.c	/^void	*str_extractor(t_spec spec, va_list *vl)$/;"	f
 str_insert	libft/ft_printf/apply_spec4.c	/^char	*str_insert(char *dst, char *src, int pos)$/;"	f
@@ -351,6 +383,7 @@ str_rev	libft/ft_putnbr_fd.c	/^static void			str_rev(char *s)$/;"	f	file:
 stupid_c0_special_case	libft/ft_printf/printf.h	/^	int				stupid_c0_special_case;$/;"	m	struct:s_spec
 t_bbtree_node	libft/includes/bbtree_utils.h	/^}						t_bbtree_node;$/;"	t	typeref:struct:s_bbtree_node
 t_builtin	t_builtin.h	/^typedef	void	(*t_builtin)(char **args, t_env env);$/;"	t
+t_component_types	cd_utils.h	/^}				t_component_types;$/;"	t	typeref:enum:e_component_types
 t_conv_f	libft/ft_printf/printf.h	/^}					t_conv_f;$/;"	t	typeref:struct:s_conv_f
 t_decimal	libft/ftoa/ft_fp.h	/^}						t_decimal;$/;"	t	typeref:struct:s_decimal
 t_env	environment.h	/^typedef t_ptree *t_env;$/;"	t
@@ -361,11 +394,15 @@ t_list	libft/includes/libft.h	/^}					t_list;$/;"	t	typeref:struct:s_list
 t_ptree	libft/includes/ft_ptree.h	/^} t_ptree;$/;"	t	typeref:struct:s_ptree
 t_spec	libft/ft_printf/printf.h	/^}					t_spec;$/;"	t	typeref:struct:s_spec
 t_unread_buff	libft/includes/get_next_line.h	/^}				t_unread_buff;$/;"	t	typeref:struct:s_unread_buff
+tilda_expansion	tilda_expansion.c	/^void	tilda_expansion(char **words, t_env env)$/;"	f
 to_array	to_array.c	/^char			**to_array(t_env env, int *memory_ok)$/;"	f
 to_ascii	libft/ftoa/decimal_arithmetic2.c	/^int			to_ascii(t_decimal repr, char *s)$/;"	f
 to_str	libft/ft_printf/printf.h	/^	char			*(*to_str)(void *arg, t_spec spec);$/;"	m	struct:s_conv_f
 traverse_children	libft/ft_ptree_to_kvpairs.c	/^static int		traverse_children(t_ptree *tree, char *prefix, t_list **kvpairs)$/;"	f	file:
 try_buffer	libft/get_next_line.c	/^static size_t			try_buffer(t_unread_buff *buff, t_list **l)$/;"	f	file:
+try_cdpath	get_curpath.c	/^static char		*try_cdpath(char *dir, t_env env)$/;"	f	file:
+type_of_component	canonicize.c	/^t_component_types	type_of_component(char *path)$/;"	f
+update_copy	builtin_env.c	/^char			**update_copy(char **args, t_env copy)$/;"	f
 value	libft/includes/ft_ptree.h	/^	void			*value;$/;"	m	struct:s_key_value
 value	libft/includes/ft_ptree.h	/^  void               *value;$/;"	m	struct:s_ptree
 w_ctoa	libft/ft_printf/conv_wrappers_other.c	/^char	*w_ctoa(void *x, t_spec spec)$/;"	f
