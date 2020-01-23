@@ -12,7 +12,7 @@ t_component_types	type_of_component(char *path)
 	if (*path == '.' && (*(path + 1) == '/' || !*(path + 1)))
 		return (dot);
 	if (*path == '.' && *(path + 1) == '.' &&\
-			(*(path + 2) == '/' || !(path + 2)))
+			(*(path + 2) == '/' || !*(path + 2)))
 		return (dotdot);
 	return (normal);
 }

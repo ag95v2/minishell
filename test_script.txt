@@ -31,3 +31,54 @@ echo $A
 echo ~
 
 ls ~ ~/21
+
+asdasd
+
+cd l
+cd libft
+cd -
+cd libft
+
+cd qweryui
+cd .////////././././././/////../
+cd -
+cd /home/anton/21/../21/ 
+cd echo.c
+cd echo.c/../
+
+mkdir tmp123
+mkdir tmp123/b
+ln -s tmp123/b a
+cd a
+pwd
+cd -
+cd -P a
+pwd
+
+cd -P -
+cd -L -P .
+
+
+echo $PWD
+
+echo Testing cdpath
+setenv CDPATH ~/21/minishell/libft
+getenv CDPATH
+cd includes
+
+setenv CDPATH ~:$CDPATH
+cd 21
+setenv CDPATH a:b:c:~::
+cd 21
+setenv CDPATH ~
+cd 21
+
+cd    as  asd     qwe     qe   
+
+unset OLDPWD
+unsetenv OLDPWD
+cd -
+
+cd /.//././././././././/.////..../.././
+
+exit

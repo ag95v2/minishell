@@ -2,10 +2,12 @@
 #include "t_builtin.h"
 #include "find_exec.h"
 #include "expansions.h"
+#include "unistd.h"
 
 static void	prompt(void)
 {
-	ft_putstr("minishell________$");
+	if (isatty(0))
+		ft_putstr("minishell________$");
 }
 
 int	run_cmd(t_env env, char **words, char **cmd)

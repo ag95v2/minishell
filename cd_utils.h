@@ -19,7 +19,7 @@ typedef	enum	e_component_types
 }				t_component_types;
 
 char		**parse_cd_args(char **args, int *flag_p);
-char		*get_curpath(char **args);
+char		*get_curpath(char **args, t_env env);
 
 int			part_is_a_directory(char *start, char *end);
 int			is_a_directory(char *path);
@@ -28,7 +28,6 @@ t_component_types	type_of_component(char *path);
 int					copy_next_component(char **end_canonical, char **end_raw);
 int					deal_with_dotslash(char **end_raw);
 int					deal_with_slashslash(char **end_raw);
-
 
 int					canonicize(char *path, int check_needed);
 

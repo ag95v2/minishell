@@ -11,7 +11,7 @@ static char	*find_executable(char *name, char *env_path)
 	char	**dirs;
 	char	**start;
 	char	*name_to_check;
-1
+
 	dirs = ft_strsplit(env_path, ':');
 	start = dirs;
 	if (!dirs--)

@@ -19,7 +19,7 @@ static int		first_comp_dot_dotdot(char *dir, int *errors)
 	if (!components)
 	{
 		*errors = 1;
-		ft_putstr_fd(2, "minishell: cd: Memory error\n");
+		ft_putstr_fd("minishell: cd: Memory error\n", 2);
 		return (0);
 	}
 	if (*components &&\
@@ -45,25 +45,25 @@ static char		*try_cdpath(char *dir, t_env env)
 	char		**entries;
 	char		*test_path;
 	struct stat	buf;
+	char		**start;
 
-	if (!(cdpath = ft_getenv(env, dir)))
-		return (NULL);
+	if (!(cdpath = ft_getenv(env, "CDPATH")))
+		return (ft_strdup(dir));
 	if (!(entries = ft_strsplit(cdpath, ':')))
 		return (NULL);
+	start = entries;
 	while (*entries)
 	{
 		test_path = ft_path_append(*entries, dir);
-		if (!test_path)
-			return (NULL);
-		if (stat(test_path, &buf) == 0 && S_ISDIR(buf.st_mode))
+		if (!test_path || (stat(test_path, &buf) == 0 && S_ISDIR(buf.st_mode)))
 		{
-			del_array(entries);
+			del_array(start);
 			return (test_path);
 		}
 		ft_memdel((void **)&test_path);
 		entries++;
 	}
-	del_array(entries);
+	del_array(start);
 	return (ft_strdup(dir));
 }
 
@@ -75,7 +75,7 @@ static char		*try_cdpath(char *dir, t_env env)
 ** In case of errors return NULL
 */
 
-char		*get_curpath(char **args)
+char		*get_curpath(char **args, t_env env)
 {
 	char		*home;
 	char		*directory;
@@ -84,14 +84,14 @@ char		*get_curpath(char **args)
 	directory = *args;
 	if (!directory)
 	{
-		if ((!home = ft_getenv(env, "HOME")) || !*home)
+		if (!(home = ft_getenv(env, "HOME")) || !*home)
 		{
-			ft_putstr_fd(2, "minishell: cd: HOME not set (or set to NULL)\n");
+			ft_putstr_fd("minishell: cd: HOME not set (or set to NULL)\n", 2);
 			return (NULL);
 		}
 		directory = home;
 	}
-	if (*directory == '\\' || first_comp_dot_dotdot(directory, &errors))
+	if (*directory == '/' || first_comp_dot_dotdot(directory, &errors))
 		return (ft_strdup(directory));
 	if (errors)
 		return (NULL);

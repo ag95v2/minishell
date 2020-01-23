@@ -16,8 +16,11 @@ SRC=del_array.c\
 	dollar_expansion.c\
 	tilda_expansion.c\
 	builtin_env.c\
-	parse_cd_args.c
-
+	parse_cd_args.c\
+	get_curpath.c\
+	is_a_directory.c\
+	canonicize_utils.c\
+	canonicize.c
 
 all:
 	make -C libft re
