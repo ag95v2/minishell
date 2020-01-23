@@ -6,6 +6,8 @@
 #include "limits.h"
 #include "colors.h"
 
+int	g_last_command_status;
+
 static void	prompt(void)
 {
 	static char	hostname[HOST_NAME_MAX];
@@ -72,7 +74,7 @@ void	repl(t_env env)
 		}
 		words = ft_strsplit(cmd, ' ');
 		tilda_expansion(words, env);
-		run_cmd(env, words, &cmd);
+		g_last_command_status = run_cmd(env, words, &cmd);
 		del_array(words);
 		ft_memdel((void **)&cmd);
 		prompt();

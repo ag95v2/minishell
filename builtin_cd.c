@@ -91,28 +91,24 @@ static char	*curpath_to_canonic(char **curpath, t_env env)
 ** We inplement flag -P and cd - but ignore flag -P in case of cd -
 */
 
-void	builtin_cd(char **args, t_env env)
+int		builtin_cd(char **args, t_env env)
 {
 	int			flag_p;
 	char		*curpath;
 	char		*canonic_path;
+	int			tmp;
 
 	args = parse_cd_args(args, &flag_p);
 	if (*args && !ft_strcmp(args[0], "-"))
-	{
-		cd_minus(env);
-		return ;
-	}
+		return (cd_minus(env));
 	if (!(curpath = get_curpath(args, env)))
-		return ;
+		return (0);
 	if (flag_p)
-	{
-		change_wd(curpath, flag_p, env);
-		return ;
-	}
+		return (change_wd(curpath, flag_p, env));
 	canonic_path = curpath_to_canonic(&curpath, env);
 	if (!canonic_path)
-		return ;
-	if (!change_wd(canonic_path, flag_p, env))
+		return (0);
+	if (!(tmp = change_wd(canonic_path, flag_p, env)))
 		free(canonic_path);
+	return (tmp);
 }

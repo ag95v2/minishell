@@ -37,7 +37,7 @@ char			**update_copy(char **args, t_env copy)
 ** env a=b c=d ./program
 */
 
-void			builtin_env(char **args, t_env env)
+int			builtin_env(char **args, t_env env)
 {
 	int		memory_ok;
 	t_env	copy;
@@ -45,11 +45,11 @@ void			builtin_env(char **args, t_env env)
 	if (!(copy = copy_env(env)))
 	{
 		ft_fprintf(2, "%s", "Not enough memory\n");
-		return ;
+		return (0);
 	}
 	args = update_copy(args, copy);
 	if (!args)
-		return ;
+		return (0);
 	if (!*args)
 	{
 		memory_ok = 1;
@@ -60,4 +60,5 @@ void			builtin_env(char **args, t_env env)
 	else
 		run_cmd(copy, args, NULL);
 	delenv(copy);
+	return (1);
 }

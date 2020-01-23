@@ -15,7 +15,7 @@ int	builtin_echo(char **args, t_env env)
 	minus_n_flag = 0;
 	i = 0;
 	if (!*args)
-		return (0);
+		return (1);
 	if (!ft_strcmp(args[0], "-n"))
 	{
 		minus_n_flag = 1;
@@ -30,5 +30,5 @@ int	builtin_echo(char **args, t_env env)
 			ft_putchar(' ');
 		args++;
 	}
-	return (0);
+	return (1);
 }

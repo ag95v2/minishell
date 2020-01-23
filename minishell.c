@@ -5,7 +5,7 @@
 
 extern char	**environ;
 
-int			child;
+int			g_child;
 
 /*
 ** Kill all children if they exist.
@@ -14,7 +14,7 @@ int			child;
 void	handler(int s)
 {
 	(void)s;
-	kill(child, SIGINT);
+	kill(g_child, SIGINT);
 }
 
 /*
