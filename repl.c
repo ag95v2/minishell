@@ -55,11 +55,16 @@ void	repl(t_env env)
 {
 	char			*cmd;
 	char			**words;
-	unsigned int	nchar;
+	int				status_gnl;
 
 	prompt();
-	while ((nchar = get_next_line(0, &cmd)))
+	while ((status_gnl = get_next_line(0, &cmd)))
 	{
+		if (status_gnl == -1)
+		{
+			prompt();
+			continue ;
+		}
 		if (!expand_dollar(&cmd, env))
 		{
 			ft_memdel((void **)&cmd);

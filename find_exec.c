@@ -4,6 +4,8 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+extern int		child;
+
 static char		**create_argv(char *progname, char **args)
 {
 	int		nargs;
@@ -24,17 +26,16 @@ static char		**create_argv(char *progname, char **args)
 
 static int	execute(char *progname, char **args, char **child_env)
 {
-	pid_t	child_pid;
 	int		status;
 	char	**argv;
 
-	child_pid = fork();
-	if (child_pid == -1)
+	child = fork();
+	if (child == -1)
 	{
 		ft_putendl_fd("Could not create child process", 2);
 		return (-1);
 	}
-	if (!child_pid)
+	if (!child)
 	{
 		argv = create_argv(progname, args);
 		execve(progname, argv, child_env);
@@ -43,7 +44,8 @@ static int	execute(char *progname, char **args, char **child_env)
 	}
 	else
 	{
-		waitpid(child_pid, &status, 0);
+		waitpid(child, &status, 0);
+		child = 0;
 		return (WEXITSTATUS(status));
 	}
 }
