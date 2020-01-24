@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   to_array.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgian <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/24 13:27:58 by bgian             #+#    #+#             */
+/*   Updated: 2020/01/24 13:29:25 by bgian            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "environment.h"
 
 static char		*concat_key_value(t_list *l)
@@ -49,7 +61,7 @@ static char		**list_to_array(t_list *l)
 
 static void		del_list_entry(void *content, size_t content_size)
 {
-	(void) content_size;
+	(void)content_size;
 	free(((t_key_value *)content)->key);
 	free(((t_key_value *)content)->value);
 	free(content);
@@ -57,7 +69,7 @@ static void		del_list_entry(void *content, size_t content_size)
 
 /*
 ** Ptree to char **
-** Flatten a prefix tree to NULL-terminated array of strings in 
+** Flatten a prefix tree to NULL-terminated array of strings in
 ** format "key=value"
 ** In case of memory errors, fill memory_ok with 0
 */
