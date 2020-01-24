@@ -6,7 +6,7 @@
 /*   By: dpenney <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 14:55:09 by dpenney           #+#    #+#             */
-/*   Updated: 2019/12/24 14:44:04 by bgian            ###   ########.fr       */
+/*   Updated: 2020/01/24 17:25:59 by bgian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,6 @@
 
 # include "libft.h"
 # include <stdarg.h>
-
-# define A {{"di", &w_itoa_b10, &int_extractor, 1},
-# define B	{"u", &w_itoa_b10u, &int_extractor, 1},
-# define C	{"o", &w_itoa_b8, &int_extractor, 1},
-# define D	{"xp", &w_itoa_x, &int_extractor, 1},
-# define E	{"X", &w_itoa_xx, &int_extractor, 1},
-# define F	{"f", &w_ftoa, &float_extractor, 1},
-# define G	{"c", &w_ctoa, &char_extractor, 1},
-# define H	{"s", &w_stoa, &str_extractor, 0},
-# define I	{"%", &w_percent, &dummy_extractor, 0},
-# define J	{0, 0, 0, 0}}
-
-# define ACTIONS A B C D E F G H I J
 
 enum				e_length
 {

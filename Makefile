@@ -1,4 +1,5 @@
-FLAGS=-g -Wall -Wextra -Werror
+NAME = minishell
+FLAGS=-Wall -Wextra -Werror
 SRC=del_array.c\
 	echo.c\
 	env_actions.c\
@@ -22,10 +23,34 @@ SRC=del_array.c\
 	canonicize_utils.c\
 	canonicize.c
 
-all:
-	make -C libft re
-	gcc $(FLAGS) $(SRC) -I . -I libft/includes -L libft -lft -o minishell 
+OBJ = $(SRC:.c=.o)
+HEADER = cd_utils.h\
+		 environment.h\
+		 find_exec.h\
+		 name_max.h\
+		 t_builtin.h\
+		colors.h\
+		expansions.h\
+		find_path.h\
+		repl.h
 
-test_env:
-	make -C libft re
-	gcc -g del_array.c env_actions.c ft_getenv.c init_env.c to_array.c test_env.c -I . -I libft/includes -L libft -lft -o test_env
+all: $(NAME)
+
+$(NAME): lib $(OBJ) $(HEADER)
+	gcc $(FLAGS) $(OBJ) -I . -I libft/includes -L libft -lft -o $(NAME) 
+
+lib:
+	make -C libft
+
+%o : %c
+	gcc -I. -I libft/includes/ $(FLAGS) -c $^
+
+clean:
+	make -C libft clean
+	rm -f $(OBJ)
+
+fclean: clean
+	make -C libft fclean
+	rm -f $(NAME)
+
+re: fclean all
