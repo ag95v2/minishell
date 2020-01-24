@@ -5,6 +5,7 @@
 #include "unistd.h"
 #include "limits.h"
 #include "colors.h"
+#include "name_max.h"
 
 int	g_last_command_status;
 
