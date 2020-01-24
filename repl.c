@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   repl.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgian <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/24 13:45:27 by bgian             #+#    #+#             */
+/*   Updated: 2020/01/24 13:48:55 by bgian            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "environment.h"
 #include "t_builtin.h"
 #include "find_exec.h"
@@ -7,14 +19,14 @@
 #include "colors.h"
 #include "name_max.h"
 
-int	g_last_command_status;
+int			g_last_command_status;
 
 static void	prompt(void)
 {
 	static char	hostname[HOST_NAME_MAX];
 	static char	username[LOGIN_NAME_MAX];
 	static char	wd[PATH_MAX];
-	
+
 	if (isatty(0))
 	{
 		if (gethostname(hostname, HOST_NAME_MAX) != -1 &&\
@@ -33,7 +45,7 @@ static void	prompt(void)
 	}
 }
 
-int	run_cmd(t_env env, char **words, char **cmd)
+int			run_cmd(t_env env, char **words, char **cmd)
 {
 	int				status;
 	t_builtin		builtin;
@@ -54,7 +66,7 @@ int	run_cmd(t_env env, char **words, char **cmd)
 ** Read Eval Print Loop
 */
 
-void	repl(t_env env)
+void		repl(t_env env)
 {
 	char			*cmd;
 	char			**words;

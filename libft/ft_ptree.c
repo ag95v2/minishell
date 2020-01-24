@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ptree.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgian <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/24 13:56:21 by bgian             #+#    #+#             */
+/*   Updated: 2020/01/24 13:56:23 by bgian            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include <ft_ptree.h>
 
@@ -14,12 +26,12 @@ t_ptree			*new_tree(void)
 int				insert_value(t_ptree *tree, char *key, void *value)
 {
 	if ((!tree && !(tree = new_tree())) || !key)
-		return(key ? ft_putendl_fd("Could not allocate memory", 2) : 0);
+		return (key ? ft_putendl_fd("Could not allocate memory", 2) : 0);
 	while (*key)
 	{
 		if (!tree->child[(int)*key])
 		{
-			if	(!(tree->child[(int)*key] = new_tree()))
+			if (!(tree->child[(int)*key] = new_tree()))
 			{
 				ft_putendl_fd("Could not allocate memory", 2);
 				return (0);
@@ -50,7 +62,6 @@ void			*search_key(t_ptree *tree, char *key)
 
 void			del_key(t_ptree *tree, char *key)
 {
-	
 	if (!tree || !key)
 		return ;
 	while (*key)

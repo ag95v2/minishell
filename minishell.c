@@ -6,7 +6,7 @@
 /*   By: bgian <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 13:43:07 by bgian             #+#    #+#             */
-/*   Updated: 2020/01/24 13:43:46 by bgian            ###   ########.fr       */
+/*   Updated: 2020/01/24 13:51:45 by bgian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,8 @@ int			main(int argc, char **argv, char **environ)
 	sigemptyset(&signal_action.sa_mask);
 	signal_action.sa_flags = 0;
 	sigaction(SIGINT, &signal_action, NULL);
-
 	if (!(env = init_env(environ)))
-	 	return (1);
+		return (1);
 	repl(env);
 	delenv(env);
 	ft_putchar('\n');

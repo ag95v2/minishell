@@ -6,7 +6,7 @@
 /*   By: bgian <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 13:29:44 by bgian             #+#    #+#             */
-/*   Updated: 2020/01/24 13:30:16 by bgian            ###   ########.fr       */
+/*   Updated: 2020/01/24 13:49:32 by bgian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*find_user_home(void)
 ** In case of any other errors do not perform expansion and do not inform user
 */
 
-char	*expand_tilda(char	**word, t_env env)
+char	*expand_tilda(char **word, t_env env)
 {
 	char	*new;
 	char	*homedir;

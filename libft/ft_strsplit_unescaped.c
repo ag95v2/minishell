@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strsplit_unescaped.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgian <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/24 13:50:41 by bgian             #+#    #+#             */
+/*   Updated: 2020/01/24 13:52:16 by bgian            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 /*
@@ -15,7 +27,7 @@ static int				get_n_words(char const *s, char sep, char escape)
 	n = 0;
 	while (*s)
 	{
-		if (ft_is_part_of_word(start, s, sep, escape) && 
+		if (ft_is_part_of_word(start, s, sep, escape) &&
 			!ft_is_part_of_word(start, s + 1, sep, escape))
 			n++;
 		s++;

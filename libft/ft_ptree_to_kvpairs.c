@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ptree_to_kvpairs.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgian <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/24 13:52:47 by bgian             #+#    #+#             */
+/*   Updated: 2020/01/24 13:53:32 by bgian            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ptree.h"
 
-void					del_kvpair(t_key_value **kv)
+void			del_kvpair(t_key_value **kv)
 {
 	ft_memdel((void **)&((*kv)->key));
 	ft_memdel((void **)&((*kv)->value));
@@ -11,7 +23,7 @@ void					del_kvpair(t_key_value **kv)
 ** Return 0 in case of malloc errors
 */
 
-static int				add_kvpair(t_list **kvpairs, char *key, char *value)
+static int		add_kvpair(t_list **kvpairs, char *key, char *value)
 {
 	t_key_value	*kv;
 
