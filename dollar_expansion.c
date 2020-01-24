@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dollar_expansion.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgian <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/24 16:18:42 by bgian             #+#    #+#             */
+/*   Updated: 2020/01/24 16:18:44 by bgian            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "environment.h"
 
 static char	*replace(char **word, char *pos, const char *value)
@@ -37,7 +49,7 @@ static char	*replace(char **word, char *pos, const char *value)
 ** Because variable names can contain $, which is quite stupid
 */
 
-char	*expand_dollar(char **word, t_env env)
+char		*expand_dollar(char **word, t_env env)
 {
 	char	*tmp;
 	char	*value;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   find_path.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgian <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/24 16:12:50 by bgian             #+#    #+#             */
+/*   Updated: 2020/01/24 16:12:54 by bgian            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "environment.h"
 
 /*
@@ -26,7 +38,7 @@ static char	*find_executable(char *name, char *env_path)
 			continue ;
 		}
 		del_array(start);
-		return(name_to_check);
+		return (name_to_check);
 	}
 	del_array(start);
 	return (NULL);
@@ -55,7 +67,7 @@ static int	looks_like_path(char *name)
 ** Or search in $PATH (if such exists)
 */
 
-char	*find_path(char *name, t_env env)
+char		*find_path(char *name, t_env env)
 {
 	char	*env_path;
 

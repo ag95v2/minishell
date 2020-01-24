@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   canonicize_utils.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgian <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/24 16:15:54 by bgian             #+#    #+#             */
+/*   Updated: 2020/01/24 16:16:23 by bgian            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <sys/types.h>
 #include "cd_utils.h"
 
@@ -23,7 +35,7 @@ t_component_types	type_of_component(char *path)
 ** return 0 if end_raw reaches end of line
 */
 
-int				copy_next_component(char **end_canonical, char **end_raw)
+int					copy_next_component(char **end_canonical, char **end_raw)
 {
 	while (**end_raw && **end_raw != '/')
 	{
@@ -46,7 +58,7 @@ int				copy_next_component(char **end_canonical, char **end_raw)
 	return (1);
 }
 
-int		deal_with_dotslash(char **end_raw)
+int					deal_with_dotslash(char **end_raw)
 {
 	if (*(*end_raw + 1))
 		*end_raw += 2;
@@ -55,7 +67,7 @@ int		deal_with_dotslash(char **end_raw)
 	return (0);
 }
 
-int		deal_with_slashslash(char **end_raw)
+int					deal_with_slashslash(char **end_raw)
 {
 	*end_raw += 1;
 	return (0);

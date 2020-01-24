@@ -6,7 +6,7 @@
 /*   By: bgian <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 13:24:09 by bgian             #+#    #+#             */
-/*   Updated: 2020/01/24 13:24:27 by bgian            ###   ########.fr       */
+/*   Updated: 2020/01/24 16:17:32 by bgian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static int		cd_minus(t_env env)
 	return (1);
 }
 
-static char	*curpath_to_canonic(char **curpath, t_env env)
+static char		*curpath_to_canonic(char **curpath, t_env env)
 {
 	char		*canonic_path;
 	char		*pwd;
@@ -75,7 +75,7 @@ static char	*curpath_to_canonic(char **curpath, t_env env)
 	if (**curpath != '/')
 	{
 		if (!(pwd = ft_getenv(env, "PWD")))
-		{	
+		{
 			ft_putstr_fd(ERR_UNSET_PWD, 2);
 			ft_memdel((void **)curpath);
 			return (NULL);
@@ -103,7 +103,7 @@ static char	*curpath_to_canonic(char **curpath, t_env env)
 ** We inplement flag -P and cd - but ignore flag -P in case of cd -
 */
 
-int		builtin_cd(char **args, t_env env)
+int				builtin_cd(char **args, t_env env)
 {
 	int			flag_p;
 	char		*curpath;

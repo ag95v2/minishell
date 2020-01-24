@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cd_utils.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgian <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/24 16:29:01 by bgian             #+#    #+#             */
+/*   Updated: 2020/01/24 16:56:58 by bgian            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CD_UTILS_H
 # define CD_UTILS_H
 
@@ -6,23 +18,22 @@
 # include <sys/stat.h>
 # include <unistd.h>
 
-# define ERR_UNSET_PWD "cd : PWD is unset. Path is relative."\
-					   "Could not get current working directory.\n"
+# define ERR_UNSET_PWD "cd : PWD is unset. Path is relative.\n"
 
-typedef	enum	e_component_types
+typedef	enum		e_component_types
 {
-				normal,
-				dot,
-				dotdot,
-				empty,
-				slash
-}				t_component_types;
+	normal,
+	dot,
+	dotdot,
+	empty,
+	slash
+}					t_component_types;
 
-char		**parse_cd_args(char **args, int *flag_p);
-char		*get_curpath(char **args, t_env env);
+char				**parse_cd_args(char **args, int *flag_p);
+char				*get_curpath(char **args, t_env env);
 
-int			part_is_a_directory(char *start, char *end);
-int			is_a_directory(char *path);
+int					part_is_a_directory(char *start, char *end);
+int					is_a_directory(char *path);
 
 t_component_types	type_of_component(char *path);
 int					copy_next_component(char **end_canonical, char **end_raw);

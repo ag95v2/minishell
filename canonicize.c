@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   canonicize.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgian <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/24 16:21:11 by bgian             #+#    #+#             */
+/*   Updated: 2020/01/24 16:21:13 by bgian            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <sys/types.h>
 #include "cd_utils.h"
 
@@ -66,7 +78,6 @@ int		next_component(char *path, char **end_canonical,\
 	t_component_types	type;
 
 	type = type_of_component(*end_raw);
-
 	if (type == slash)
 		deal_with_slashslash(end_raw);
 	else if (type == dot)
@@ -107,7 +118,6 @@ int		canonicize(char *path, int check_needed)
 		end_canonical++;
 		end_raw++;
 	}
-	
 	while (*end_raw)
 	{
 		if (!next_component(path, &end_canonical, &end_raw, check_needed))

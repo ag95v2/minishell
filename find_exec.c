@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   find_exec.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgian <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/24 16:11:29 by bgian             #+#    #+#             */
+/*   Updated: 2020/01/24 16:11:34 by bgian            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "environment.h"
 #include "unistd.h"
 #include "find_path.h"
@@ -24,7 +36,7 @@ static char		**create_argv(char *progname, char **args)
 	return (new);
 }
 
-static int	execute(char *progname, char **args, char **child_env)
+static int		execute(char *progname, char **args, char **child_env)
 {
 	int		status;
 	char	**argv;
@@ -40,7 +52,7 @@ static int	execute(char *progname, char **args, char **child_env)
 		argv = create_argv(progname, args);
 		execve(progname, argv, child_env);
 		ft_putendl_fd("Execution error", 2);
-		exit (-1);
+		exit(-1);
 	}
 	else
 	{
@@ -50,21 +62,21 @@ static int	execute(char *progname, char **args, char **child_env)
 	}
 }
 
-static int	no_exec_rights(char *progname)
+static int		no_exec_rights(char *progname)
 {
 	ft_fprintf(2, "minishell: %s: Permission denied\n", progname);
 	free(progname);
 	return (-1);
 }
 
-static int	memory_trouble(char **child_env)
+static int		memory_trouble(char **child_env)
 {
 	del_array(child_env);
 	ft_putendl_fd("Could not allocate memory for new process", 2);
 	return (-1);
 }
 
-int			find_exec(char **args, t_env env)
+int				find_exec(char **args, t_env env)
 {
 	char	**child_env;
 	char	*progname;

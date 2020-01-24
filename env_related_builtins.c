@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   env_related_builtins.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgian <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/24 16:14:38 by bgian             #+#    #+#             */
+/*   Updated: 2020/01/24 16:14:40 by bgian            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "environment.h"
 
 int			builtin_getenv(char **args, t_env env)
@@ -33,7 +45,7 @@ int			builtin_setenv(char **args, t_env env)
 
 	if (!*args)
 		return (1);
-	if (*args && !*(args+1))
+	if (*args && !*(args + 1))
 	{
 		ft_setenv(env, *args, ft_strdup(""));
 		return (1);

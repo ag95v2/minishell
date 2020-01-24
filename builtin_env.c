@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   builtin_env.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgian <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/24 16:15:13 by bgian             #+#    #+#             */
+/*   Updated: 2020/01/24 16:15:15 by bgian            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "repl.h"
 #include "environment.h"
 
@@ -37,7 +49,7 @@ char			**update_copy(char **args, t_env copy)
 ** env a=b c=d ./program
 */
 
-int			builtin_env(char **args, t_env env)
+int				builtin_env(char **args, t_env env)
 {
 	int		memory_ok;
 	t_env	copy;

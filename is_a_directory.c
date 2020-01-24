@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   is_a_directory.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgian <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/24 16:10:13 by bgian             #+#    #+#             */
+/*   Updated: 2020/01/24 16:10:17 by bgian            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <sys/stat.h>
 #include <unistd.h>
 
@@ -11,7 +23,7 @@ int		is_a_directory(char *path)
 }
 
 /*
-** Check if certain component of path is a directory 
+** Check if certain component of path is a directory
 ** (non-destructive, in-place)
 */
 
