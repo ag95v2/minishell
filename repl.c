@@ -6,7 +6,7 @@
 /*   By: bgian <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 13:45:27 by bgian             #+#    #+#             */
-/*   Updated: 2020/01/24 13:48:55 by bgian            ###   ########.fr       */
+/*   Updated: 2020/02/02 21:30:51 by bgian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@
 #include "colors.h"
 #include "name_max.h"
 
-int			g_last_command_status;
-
-static void	prompt(void)
+void		prompt(void)
 {
 	static char	hostname[HOST_NAME_MAX];
 	static char	username[LOGIN_NAME_MAX];
@@ -45,6 +43,10 @@ static void	prompt(void)
 	}
 }
 
+/*
+**	All bulilltins return 0 according to convention
+*/
+
 int			run_cmd(t_env env, char **words, char **cmd)
 {
 	int				status;
@@ -62,6 +64,23 @@ int			run_cmd(t_env env, char **words, char **cmd)
 	return (0);
 }
 
+void		update_status(t_env env, int status)
+{
+	char	*lst_cmd;
+
+	lst_cmd = ft_itoa(status);
+	if (!lst_cmd)
+	{
+		ft_putendl_fd("Could not set last cmd status.", 2);
+		return ;
+	}
+	if (!ft_setenv(env, LAST_STATUS, lst_cmd))
+	{
+		ft_memdel((void **)&lst_cmd);
+		ft_putendl_fd("Could not set last cmd status. Not a big problem", 2);
+	}
+}
+
 /*
 ** Read Eval Print Loop
 */
@@ -71,23 +90,20 @@ void		repl(t_env env)
 	char			*cmd;
 	char			**words;
 	int				status_gnl;
+	int				lst_cmd_status;
 
 	prompt();
 	while ((status_gnl = get_next_line(0, &cmd)))
 	{
-		if (status_gnl == -1)
-		{
-			prompt();
-			continue ;
-		}
 		if (!expand_dollar(&cmd, env))
 		{
 			ft_memdel((void **)&cmd);
 			continue ;
 		}
-		words = ft_strsplit(cmd, ' ');
+		words = ft_strsplit(tabs_to_spaces(cmd), ' ');
 		tilda_expansion(words, env);
-		g_last_command_status = run_cmd(env, words, &cmd);
+		lst_cmd_status = run_cmd(env, words, &cmd);
+		update_status(env, lst_cmd_status);
 		del_array(words);
 		ft_memdel((void **)&cmd);
 		prompt();

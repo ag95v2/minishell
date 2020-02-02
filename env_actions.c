@@ -6,7 +6,7 @@
 /*   By: bgian <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 16:19:23 by bgian             #+#    #+#             */
-/*   Updated: 2020/01/24 16:19:35 by bgian            ###   ########.fr       */
+/*   Updated: 2020/02/02 20:54:48 by bgian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_env			copy_env(t_env env)
 
 /*
 ** Name should be freed later by caller
+** Value should be freeable
 */
 
 int				ft_setenv(t_env env, char *name, char *value)

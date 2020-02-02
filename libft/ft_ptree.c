@@ -6,7 +6,7 @@
 /*   By: bgian <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 13:56:21 by bgian             #+#    #+#             */
-/*   Updated: 2020/01/24 13:56:23 by bgian            ###   ########.fr       */
+/*   Updated: 2020/02/02 20:55:43 by bgian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_ptree			*new_tree(void)
 /*
 ** Return nonzero on success
 ** Remove old entry properly if needed
+** Value should be freeable
 */
 
 int				insert_value(t_ptree *tree, char *key, void *value)

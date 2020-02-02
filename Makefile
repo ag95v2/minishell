@@ -21,7 +21,9 @@ SRC=del_array.c\
 	get_curpath.c\
 	is_a_directory.c\
 	canonicize_utils.c\
-	canonicize.c
+	canonicize.c\
+	tabs_to_spaces.c\
+	ft_putstr_echo.c
 
 OBJ = $(SRC:.c=.o)
 HEADER = cd_utils.h\
@@ -34,16 +36,16 @@ HEADER = cd_utils.h\
 		find_path.h\
 		repl.h
 
-all: $(NAME)
+all: lib $(NAME) 
 
-$(NAME): lib $(OBJ) $(HEADER)
+$(NAME): $(OBJ) 
 	gcc $(FLAGS) $(OBJ) -I . -I libft/includes -L libft -lft -o $(NAME) 
 
 lib:
 	make -C libft
 
-%o : %c
-	gcc -I. -I libft/includes/ $(FLAGS) -c $^
+%o : %c $(HEADER) 
+	gcc -I. -I libft/includes/ $(FLAGS) -c $<
 
 clean:
 	make -C libft clean

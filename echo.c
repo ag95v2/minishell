@@ -6,7 +6,7 @@
 /*   By: bgian <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 16:17:51 by bgian             #+#    #+#             */
-/*   Updated: 2020/01/24 16:17:52 by bgian            ###   ########.fr       */
+/*   Updated: 2020/01/28 17:50:33 by bgian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	builtin_echo(char **args, t_env env)
 	}
 	while (*args)
 	{
-		ft_putstr(*args);
+		ft_putstr_echo(*args);
 		if (!minus_n_flag)
 			ft_putchar(!*(args + 1) ? '\n' : ' ');
 		else if (*(args + 1))

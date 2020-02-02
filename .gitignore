@@ -1,7 +1,0 @@
-minishell
-print_args
-test_env
-*.o
-libft/*.o
-libft/*.a
-pdf

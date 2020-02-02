@@ -6,7 +6,7 @@
 /*   By: bgian <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 16:11:29 by bgian             #+#    #+#             */
-/*   Updated: 2020/01/24 16:11:34 by bgian            ###   ########.fr       */
+/*   Updated: 2020/02/02 20:47:04 by bgian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-extern int		g_child;
+extern pid_t	g_child;
 
 static char		**create_argv(char *progname, char **args)
 {

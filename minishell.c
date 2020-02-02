@@ -6,7 +6,7 @@
 /*   By: bgian <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 13:43:07 by bgian             #+#    #+#             */
-/*   Updated: 2020/01/24 13:51:45 by bgian            ###   ########.fr       */
+/*   Updated: 2020/02/02 21:30:29 by bgian            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,14 @@
 #include "repl.h"
 #include <signal.h>
 
-int			g_child;
-
-/*
-** Kill (only) child if it exists.
-*/
+pid_t			g_child;
 
 void		handler(int s)
 {
 	(void)s;
-	kill(g_child, SIGINT);
+	write(0, "\n", 1);
+	if (!g_child)
+		prompt();
 }
 
 /*
@@ -36,16 +34,19 @@ void		handler(int s)
 int			main(int argc, char **argv, char **environ)
 {
 	t_env				env;
-	struct sigaction	signal_action;
+	char				*c;
 
 	(void)argc;
 	(void)argv;
-	signal_action.sa_handler = handler;
-	sigemptyset(&signal_action.sa_mask);
-	signal_action.sa_flags = 0;
-	sigaction(SIGINT, &signal_action, NULL);
+	signal(SIGINT, &handler);
 	if (!(env = init_env(environ)))
 		return (1);
+	ft_unsetenv(env, "OLDPWD");
+	if (!(c = ft_strdup("0")) || !ft_setenv(env, LAST_STATUS, c))
+	{
+		free(c);
+		ft_putendl_fd("Could not set last cmd status. Not a big problem", 2);
+	}
 	repl(env);
 	delenv(env);
 	ft_putchar('\n');
